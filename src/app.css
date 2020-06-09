@@ -6,7 +6,6 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
-.navRoot {
-  background-color: red;
-  flex-grow: 1;
+#loginButton {
+  color: #ee6c4d;
 }
