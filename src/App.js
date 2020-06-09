@@ -1,11 +1,16 @@
 import React from 'react';
-import './'
+import Nav from './components/nav'
+import { BrowserRouter } from 'react-router-dom'
+import Router from './router'
 
 function App() {
   return (
     <div className="App">
-      Web Dev Interview Q's 2.0!<br />
-      Bigger, badder and less buggy
+      <BrowserRouter>
+      <Nav/>   
+      <Router/>   
+      </BrowserRouter>
+
     </div>
   );
 }
