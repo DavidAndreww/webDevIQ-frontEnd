@@ -1,12 +1,9 @@
 import React from 'react';
-import './'
+import Nav from './components/nav'
 
 function App() {
   return (
-    <div className="App">
-      Web Dev Interview Q's 2.0!<br />
-      Bigger, badder and less buggy
-    </div>
+    <Nav />
   );
 }
 
