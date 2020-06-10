@@ -47,3 +47,8 @@ margin: 60px;
   justify-content: center;
   color: #ee6c4d;
 }
+#createButton {
+  color: #ee6c4d;
+  font-size: 18px;
+  border: 1px solid #ee6c4d;
+}

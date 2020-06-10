@@ -102,7 +102,7 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar className={classes.root}>
           <Typography variant="h6" className={classes.title}>
-            Web Dev Interview Questions
+            Name/logo
           </Typography>
           <Button id='loginButton'>Login</Button>
           <div>

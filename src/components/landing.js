@@ -4,15 +4,15 @@ import Grow from '@material-ui/core/Grow';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+import FormDialog from '../components/createAccount'
+import DialogActions from '@material-ui/core/DialogActions';
 
 
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: 180,
-		width: '80%'
+		width: '90%'
 	},
 	container: {
 		display: 'flex',
@@ -41,7 +41,10 @@ const Landing = () => {
 		<div className='landingRoot'>
 			<div id='welcomeText'>
 				<h2>Welcome to (name).</h2>
-				<h4>(mission statement)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
+				<h4>(mission statement and slight about)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
+				<DialogActions>
+           <FormDialog />
+				</DialogActions>
 			</div>
 
 			<div className={classes.root}>
