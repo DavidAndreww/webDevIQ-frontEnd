@@ -1,3 +1,11 @@
+/* colors 
+dark blue = #293241
+orange = #ee6c4d
+light navy = #3d5a80
+sky = #98c1d9
+ice = #e0fbfc */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
 
 
@@ -8,4 +16,9 @@ body {
 
 #loginButton {
   color: #ee6c4d;
+}
+
+.menuIcon {
+  font-size: 25px;
+  color: #293241; 
 }

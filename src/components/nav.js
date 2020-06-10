@@ -13,8 +13,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { MdAccountBox } from "react-icons/md";
+import { RiProfileLine } from "react-icons/ri";
+import { GoGraph } from "react-icons/go";
+import { GrContact, GrInfo } from "react-icons/gr";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,21 +60,39 @@ export default function ButtonAppBar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+      <ListItem button>
+          <ListItemIcon>
+            <MdAccountBox className='menuIcon' />
+          </ListItemIcon>
+          <ListItemText primary="Account" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <RiProfileLine className='menuIcon' />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GoGraph className='menuIcon' />
+          </ListItemIcon>
+          <ListItemText primary="Scorecard" />
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+      <ListItem button>
+          <ListItemIcon>
+            <GrContact className='menuIcon' />
+          </ListItemIcon>
+          <ListItemText primary="Contact" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GrInfo className='menuIcon' />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
       </List>
     </div>
   )
@@ -85,14 +105,20 @@ export default function ButtonAppBar() {
             Web Dev Interview Questions
           </Typography>
           <Button id='loginButton'>Login</Button>
-          <React.Fragment>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </IconButton>
-          <Drawer onClose={toggleDrawer(false)}>
-            {list}
-          </Drawer>
-          </React.Fragment>
+          <div>
+            {['right'].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <Button onClick={toggleDrawer(anchor, true)}>
+                  <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <MenuIcon />
+                  </IconButton>
+                </Button>
+                <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
+          </div>
         </Toolbar>
       </AppBar>
     </div>
