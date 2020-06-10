@@ -22,3 +22,28 @@ body {
   font-size: 25px;
   color: #293241; 
 }
+
+.landingRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+margin: 60px;
+}
+
+#welcomeText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ee6c4d;
+  font-size: 25px;
+}
+
+.introCard {
+  margin-top: 20px;
+}
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  color: #ee6c4d;
+}
