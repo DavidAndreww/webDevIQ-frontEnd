@@ -20,45 +20,21 @@ export default function FormDialog() {
 
 	return (
 		<div>
-			<Button onClick={handleClickOpen} id="createButton">
-				Create an Account!
+			<Button onClick={handleClickOpen} id="loginButton">
+				Login
       </Button>
 			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-				<DialogTitle id="form-dialog-title">Sign Up!</DialogTitle>
+				<DialogTitle id="form-dialog-title">Sign in.</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						Sign up for a free account to learn more about the interview process for a web development job.
+						Sign in to your existing account.
           </DialogContentText>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="firstName"
-						label="First Name"
-						type="name1"
-						fullWidth
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="lastName"
-						label="Last Name"
-						type="name2"
-						fullWidth
-					/>
 					<TextField
 						autoFocus
 						margin="dense"
 						id="username"
 						label="Username"
 						type="username"
-						fullWidth
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="name"
-						label="Email Address"
-						type="email"
 						fullWidth
 					/>
 					<TextField
