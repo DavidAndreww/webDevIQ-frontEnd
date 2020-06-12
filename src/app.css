@@ -14,6 +14,15 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
+footer{
+  width: 100%;
+  background-color: #293241;
+}
+
+#logo{
+  height: 90%;
+  margin-right: 10px;
+}
 #loginButton {
   color: #ee6c4d;
 }
@@ -54,4 +63,48 @@ margin: 60px;
 }
 #welcomeSwitch{
   background-color: #ee6c4d;
+}
+
+/*//////////////////    Dashboard    //////////////////////*/
+
+#welcomeUser{
+  margin-top: 25px;
+  margin-left: 15px;
+  color: #ee6c4d;
+  font-size: 25px;
+}
+
+#scoreCard{
+/* border: 1px solid red; */
+ display: flex;
+ flex-direction: column;
+}
+#scoreCard p{
+  font-size: 115%;
+}
+#practiceButton {
+background-color: #ee6c4d;
+font-weight: bolder;
+color: white;
+}
+
+#scoreNum{
+  display: flex;
+  justify-content: center;
+  font-size: 350%;
+}
+.cardTitle{
+  color: #293241;
+  font-size: 150%;
+}
+#questOptCard{
+  display: flex;
+}
+#questOptCardLeft{
+  font-size: 115%;
+  width: 70%;
+}
+#questOptCardRight{
+  border: 1px solid red;
+  flex: 1;
 }

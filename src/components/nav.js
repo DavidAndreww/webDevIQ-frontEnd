@@ -30,10 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: '#ee6c4d'
+    color: '#ee6c4d',
   },
   title: {
     flexGrow: 1,
+    fontFamily: "'Inconsolata', monospace",
+    fontSize: 45,
+    color: "#ee6c4d",
+
   },
 }));
 
@@ -102,8 +106,9 @@ export default function ButtonAppBar() {
     <div>
       <AppBar position="static">
         <Toolbar className={classes.root}>
+          <img src='https://i.imgur.com/xv6hPO8.png'id='logo'></img> 
           <Typography variant="h6" className={classes.title}>
-            Name/logo
+           DevIQ 
           </Typography>
           <Button id='loginButton'><FormDialog/></Button>
           <div>

@@ -40,7 +40,7 @@ const Landing = () => {
 	return (
 		<div className='landingRoot'>
 			<div id='welcomeText'>
-				<h2>Welcome to (name).</h2>
+				<h2>Welcome to DevIQ.</h2>
 				<h4>(mission statement and slight about)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
 				<DialogActions>
            <FormDialog />
