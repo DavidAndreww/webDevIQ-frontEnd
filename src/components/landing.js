@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	svg: {
 		width: '100%',
 		height: 100,
-	},
+	}
 }));
 
 const Landing = () => {
@@ -50,7 +50,7 @@ const Landing = () => {
 			<div className={classes.root}>
 				<div className='buttonDiv'>
 				<FormControlLabel
-					control={<Switch checked={checked} onChange={handleChange} />}
+					control={<Switch id='welcomeSwitch' checked={checked} onChange={handleChange} />}
 					label="Show more information"
 				/>
 				</div>
