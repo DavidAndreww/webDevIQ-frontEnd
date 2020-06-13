@@ -36,7 +36,7 @@ const Dashboard = () => {
 		javaScript: true,
 		react: true,
 		node: true,
-		angular: true
+		angular: false
 	});
 
 	const handleChange = (event) => {
@@ -47,7 +47,7 @@ const Dashboard = () => {
 	return (
 		<div className='dashRoot'>
 			<div id='welcomeUser'>
-				Welcome, username.
+				Welcome, David and John.
 		</div>
 			<div className='userCards'>
 				<Card className={classes.root}>
