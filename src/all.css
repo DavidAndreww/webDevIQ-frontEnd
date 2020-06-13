@@ -151,6 +151,14 @@ color: white;
   justify-content: space-around;
 }
 #weAreDesperate {
+  display: flex;
+  flex-direction: column;
   margin: 35px;
+  color: white;
+  align-items: center;
+}
+#donateButton{
+  display: flex;
+  background-color: #ee6c4d;
   color: white;
 }

@@ -139,13 +139,16 @@ const Dashboard = () => {
 				<Card className={classes.root2}>
 					<div className='articleCardContainer'>
 										<div className='articleCardTitle'>Functional programming</div>
-				<Button className>Go to article</Button>
+				<Button>Go to article</Button>
 				</div>
 				</Card>
 
 			</div>
 			<div id='weAreDesperate'>
-				As many old and new developers know, projects like these take time and money for us to provide them as a service. If you find this site useful or just want to support us in our journey through the development world, please consider donating. 
+				As many old and new developers know, projects like these take time and money for us to provide them as a service. If you find this site useful or just want to support us in our journey through the development world, please consider donating.
+				<div>
+					<Button variant='contained' id='donateButton'>Donate!</Button>
+					</div> 
 			</div>
 		</div>
 	)
