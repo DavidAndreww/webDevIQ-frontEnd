@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-=======
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
@@ -11,7 +8,6 @@ import FormDialog from '../components/createAccount'
 import DialogActions from '@material-ui/core/DialogActions';
 
 
->>>>>>> johnsBranch
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,12 +30,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Landing = () => {
-<<<<<<< HEAD
-  return <div>Landing</div>;
-};
-
-export default Landing;
-=======
 	const classes = useStyles();
 	const [checked, setChecked] = React.useState(false);
 
@@ -98,4 +88,3 @@ export default Landing;
 
 
 export default Landing
->>>>>>> johnsBranch
