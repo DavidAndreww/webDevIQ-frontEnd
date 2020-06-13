@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -6,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormDialog from '../components/submission'
+import { username } from '../containers/dashboard';
 
 
 const useStyles = makeStyles({
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
 	}
 });
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		javaScript: true,
@@ -43,11 +45,15 @@ const Dashboard = () => {
 		setState({ ...state, [event.target.name]: event.target.checked });
 	};
 
+	// const Username = () => {
+	// 	const username = useSelector(state => state.username)
+	// }
+
 
 	return (
 		<div className='dashRoot'>
 			<div id='welcomeUser'>
-				Welcome, username.
+				Welcome, {props.username}.
 		</div>
 			<div className='userCards'>
 				<Card className={classes.root}>
