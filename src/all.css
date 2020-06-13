@@ -1,3 +1,11 @@
+/* colors 
+dark blue = #293241
+orange = #ee6c4d
+light navy = #3d5a80
+sky = #98c1d9
+ice = #e0fbfc */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
 
 
@@ -6,7 +14,135 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
-.navRoot {
-  background-color: red;
-  flex-grow: 1;
+footer{
+  width: 100%;
+  background-color: #293241;
+}
+
+#logo{
+  height: 90%;
+  margin-right: 10px;
+}
+#loginButton {
+  color: #ee6c4d;
+}
+
+.menuIcon {
+  font-size: 25px;
+  color: #293241; 
+}
+
+.landingRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+margin: 60px;
+}
+
+#welcomeText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ee6c4d;
+  font-size: 25px;
+}
+
+.introCard {
+  margin-top: 20px;
+}
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  color: #ee6c4d;
+}
+#createButton {
+  color: #ee6c4d;
+  font-size: 18px;
+  border: 2px solid #ee6c4d;
+}
+#welcomeSwitch{
+  background-color: #ee6c4d;
+}
+
+/*//////////////////    Dashboard    //////////////////////*/
+
+#welcomeUser{
+  margin-top: 25px;
+  margin-left: 15px;
+  color: #ee6c4d;
+  font-size: 25px;
+}
+
+#scoreCard{
+/* border: 1px solid red; */
+ display: flex;
+ flex-direction: column;
+}
+#scoreCard p{
+  font-size: 115%;
+  color: #293241;
+}
+#practiceButton {
+background-color: #ee6c4d;
+font-weight: bolder;
+color: white;
+}
+
+#scoreNum{
+  display: flex;
+  justify-content: center;
+  font-size: 350%;
+  color: #293241;
+  text-shadow: 1px 1px 1px #29324188;
+}
+.cardTitle{
+  color: #293241;
+  font-size: 150%;
+}
+#questOptCard{
+  display: flex;
+}
+#questOptCardLeft{
+  font-size: 115%;
+  width: 70%;
+}
+#questOptCardRight{
+  /* border: 1px solid red; */
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-size: 120%;
+}
+.optionsList{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid #293241;
+  padding-left: 10px;
+
+}
+#suggestionsButtonArea{
+  display: flex;
+
+  width: 100%;
+  height: 35px;
+  justify-content: space-between;
+  margin-right: 45px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+#suggestionCardHeading{
+  color: white;
+  font-size: 150%;
+  margin-left: 15px;
+}
+
+
+#articleContainer{
+  display: flex;
+  justify-content: space-around;
 }
