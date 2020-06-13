@@ -81,6 +81,7 @@ margin: 60px;
 }
 #scoreCard p{
   font-size: 115%;
+  color: #293241;
 }
 #practiceButton {
 background-color: #ee6c4d;
@@ -92,6 +93,8 @@ color: white;
   display: flex;
   justify-content: center;
   font-size: 350%;
+  color: #293241;
+  text-shadow: 1px 1px 1px #29324188;
 }
 .cardTitle{
   color: #293241;
