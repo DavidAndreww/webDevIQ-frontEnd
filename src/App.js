@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Nav />
-        {/* <Landing /> */}
-        <Dashboard/>
+        <Landing />
+        {/* <Dashboard/> */}
         {/* <Router /> */}
       </BrowserRouter>
 

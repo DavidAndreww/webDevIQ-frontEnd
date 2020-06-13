@@ -50,7 +50,7 @@ const Landing = () => {
 			<div className={classes.root}>
 				<div className='buttonDiv'>
 				<FormControlLabel
-					control={<Switch id='welcomeSwitch' checked={checked} onChange={handleChange} />}
+					control={<Switch id='welcomeSwitch' checked={checked} onChange={handleChange} color="default" />}
 					label="Show more information"
 				/>
 				</div>
