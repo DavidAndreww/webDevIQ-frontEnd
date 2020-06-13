@@ -14,10 +14,7 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
-footer{
-  width: 100%;
-  background-color: #293241;
-}
+
 
 #logo{
   height: 90%;
@@ -64,6 +61,10 @@ margin: 60px;
 }
 #welcomeSwitch{
   background-color: #ee6c4d;
+}
+.drawerLink{
+  text-decoration: none;
+  color: inherit;
 }
 
 /*//////////////////    Dashboard    //////////////////////*/

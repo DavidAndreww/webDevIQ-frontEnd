@@ -18,6 +18,7 @@ import { MdAccountBox } from "react-icons/md";
 import { RiProfileLine } from "react-icons/ri";
 import { GoGraph } from "react-icons/go";
 import { GrContact, GrInfo } from "react-icons/gr";
+import { Link } from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,24 +66,30 @@ export default function ButtonAppBar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        <Link to='/account/username' className='drawerLink'>
       <ListItem button>
           <ListItemIcon>
             <MdAccountBox className='menuIcon' />
           </ListItemIcon>
           <ListItemText primary="Account" />
         </ListItem>
+        </Link>
+        <Link to='/profile' className='drawerLink'>
         <ListItem button>
           <ListItemIcon>
             <RiProfileLine className='menuIcon' />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItem>
+        </Link>
+        <Link to='/dashboard' className='drawerLink'>
         <ListItem button>
           <ListItemIcon>
             <GoGraph className='menuIcon' />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
