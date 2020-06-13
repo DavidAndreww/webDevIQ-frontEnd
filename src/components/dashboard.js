@@ -45,15 +45,15 @@ const Dashboard = (props) => {
 		setState({ ...state, [event.target.name]: event.target.checked });
 	};
 
-	// const Username = () => {
-	// 	const username = useSelector(state => state.username)
-	// }
+	// redux hook, how you doin?
+	const username = useSelector(state => state.username)
+	const dispatch = useDispatch()//pass action in here
 
 
 	return (
 		<div className='dashRoot'>
 			<div id='welcomeUser'>
-				Welcome, {props.username}.
+				Welcome, {username}!
 		</div>
 			<div className='userCards'>
 				<Card className={classes.root}>

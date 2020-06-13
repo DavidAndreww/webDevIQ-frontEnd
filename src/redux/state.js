@@ -1,5 +1,5 @@
 const state = {
-    username: '#1devNA'
+    username: '#1DevNA'
 };
 
 export default state;
