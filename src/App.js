@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         {/* <Landing /> */}
-        <Dashboard/>
-        {/* <Router /> */}
+        {/* <Dashboard/> */}
+        <Router />
       </BrowserRouter>
 
     </div>
