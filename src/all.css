@@ -163,3 +163,12 @@ color: white;
   background-color: #ee6c4d;
   color: white;
 }
+
+
+/* //////////////////    Quiz Page     ////////////////////*/
+
+#quizRoot {
+  font-size: 300%;
+  color: white;
+  margin: 40px;
+}
