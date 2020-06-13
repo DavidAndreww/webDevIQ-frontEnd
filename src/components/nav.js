@@ -81,7 +81,7 @@ export default function ButtonAppBar() {
           <ListItemIcon>
             <GoGraph className='menuIcon' />
           </ListItemIcon>
-          <ListItemText primary="Scorecard" />
+          <ListItemText primary="Dashboard" />
         </ListItem>
       </List>
       <Divider />
