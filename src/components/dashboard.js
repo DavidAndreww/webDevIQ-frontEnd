@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
-
+import FormDialog from '../components/submission'
 
 
 const useStyles = makeStyles({
@@ -71,7 +71,7 @@ const Dashboard = () => {
 								<CardActions className={classes.actions}>
 									<div id='suggestionsButtonArea'>
 									Have suggesions on topics or questions?
-									<Button variant="contained" id='practiceButton'>Click here</Button>
+									<FormDialog/>
 									</div>
 								</CardActions>
 
