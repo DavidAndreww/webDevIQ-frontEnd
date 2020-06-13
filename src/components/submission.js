@@ -52,13 +52,13 @@ export default function FormDialog() {
 						fullWidth
 					/>
 					<TextField
-          id="filled-multiline-static"
-          label="Suggestion"
-          multiline
-          rows={5}
-					variant="filled"
-					fullWidth
-        />
+						id="filled-multiline-static"
+						label="Suggestion"
+						multiline
+						rows={5}
+						variant="filled"
+						fullWidth
+					/>
 
 				</DialogContent>
 				<DialogActions>
