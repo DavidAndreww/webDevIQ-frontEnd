@@ -144,6 +144,9 @@ const Dashboard = () => {
 				</Card>
 
 			</div>
+			<div id='weAreDesperate'>
+				As many old and new developers know, projects like these take time and money for us to provide them as a service. If you find this site useful or just want to support us in our journey through the development world, please consider donating. 
+			</div>
 		</div>
 	)
 

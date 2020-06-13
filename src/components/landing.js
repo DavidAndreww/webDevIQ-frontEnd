@@ -41,7 +41,7 @@ const Landing = () => {
 		<div className='landingRoot'>
 			<div id='welcomeText'>
 				<h2>Welcome to DevIQ.</h2>
-				<h4>(mission statement and slight about)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
+				<h4>We created this website in efforts to help entry level job seekers practice interviewing. Our goal was to make a study resource based on the non-whiteboarding based questions you are likely to be asked in an interview. </h4>
 				<DialogActions>
            <FormDialog />
 				</DialogActions>

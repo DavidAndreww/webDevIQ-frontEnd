@@ -73,6 +73,8 @@ margin: 60px;
   margin-left: 15px;
   color: #ee6c4d;
   font-size: 25px;
+  text-shadow: 1px 1px 1px #29324185;
+
 }
 
 #scoreCard{
@@ -137,7 +139,8 @@ color: white;
 }
 
 #suggestionCardHeading{
-  color: white;
+  color: #ee6c4d;
+  text-shadow: 1px 1px 1px #29324185;
   font-size: 150%;
   margin-left: 15px;
 }
@@ -146,4 +149,8 @@ color: white;
 #articleContainer{
   display: flex;
   justify-content: space-around;
+}
+#weAreDesperate {
+  margin: 35px;
+  color: white;
 }
