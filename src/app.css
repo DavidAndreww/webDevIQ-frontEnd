@@ -105,6 +105,41 @@ color: white;
   width: 70%;
 }
 #questOptCardRight{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-size: 120%;
+}
+.optionsList{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid #293241;
+  padding-left: 10px;
+
+}
+#suggestionsButtonArea{
+  display: flex;
+
+  width: 100%;
+  height: 35px;
+  justify-content: space-between;
+  margin-right: 45px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+#suggestionCardHeading{
+  color: white;
+  font-size: 150%;
+  margin-left: 15px;
+}
+
+
+#articleContainer{
+  display: flex;
+  justify-content: space-around;
 }
