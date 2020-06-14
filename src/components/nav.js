@@ -20,6 +20,8 @@ import { GoGraph } from "react-icons/go";
 import { GrContact, GrInfo } from "react-icons/gr";
 import { Link } from 'react-router-dom'
 
+// https://github.com/Swizec/useAuth/tree/master/examples/useauth-create-react-app
+// check it out!
 
 const useStyles = makeStyles((theme) => ({
   root: {
