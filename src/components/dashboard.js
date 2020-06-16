@@ -7,11 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormDialog from '../components/submission'
-<<<<<<< HEAD
-import { username } from '../containers/dashboard';
-=======
 import { Link } from 'react-router-dom'
->>>>>>> b4b9e8b22708728b086142edce5ea750b6be5b48
 
 
 const useStyles = makeStyles({
@@ -60,11 +56,7 @@ const Dashboard = (props) => {
 	return (
 		<div className='dashRoot'>
 			<div id='welcomeUser'>
-<<<<<<< HEAD
-				Welcome, {username}!
-=======
 				Welcome, David and John.
->>>>>>> b4b9e8b22708728b086142edce5ea750b6be5b48
 		</div>
 			<div className='userCards'>
 				<Card className={classes.root}>
