@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormDialog from '../components/submission'
+import { Link } from 'react-router-dom'
 
 
 const useStyles = makeStyles({
@@ -27,6 +28,9 @@ const useStyles = makeStyles({
 	actions: {
 		display: 'flex',
 		justifyContent: 'flex-end'
+	},
+	link: {
+		textDecoration: 'none'
 	}
 });
 
@@ -59,7 +63,8 @@ const Dashboard = () => {
 						</div>
 					</CardContent>
 					<CardActions className={classes.actions}>
-						<Button variant="contained" id='practiceButton'>Practice More!</Button>
+						<Link className={classes.link} to='/quiz'>
+						<Button variant="contained" id='practiceButton'>Practice More!</Button></Link>
 					</CardActions>
 				</Card>
 				<Card className={classes.root}>

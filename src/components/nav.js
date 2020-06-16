@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Inconsolata', monospace",
     fontSize: 45,
     color: "#ee6c4d",
+    pointerEvents: 'none'
 
   },
 }));
@@ -113,9 +114,10 @@ export default function ButtonAppBar() {
     <div>
       <AppBar position="static">
         <Toolbar className={classes.root}>
-          <img src='https://i.imgur.com/xv6hPO8.png'id='logo'></img> 
+          <img src='https://i.imgur.com/xv6hPO8.png'id='logo'></img>
+          
           <Typography variant="h6" className={classes.title}>
-           DevIQ 
+           <Link id='logoLink' to='/dashboard'>DevIQ</Link> 
           </Typography>
           <Button id='loginButton'><FormDialog/></Button>
           <div>

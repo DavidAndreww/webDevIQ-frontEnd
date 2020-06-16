@@ -14,7 +14,7 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
-
+/*//////////////////    Nav Bar    ////////////////////*/
 
 #logo{
   height: 90%;
@@ -27,15 +27,27 @@ body {
 
 .menuIcon {
   font-size: 25px;
-  color: #293241; 
+  color: #293241;  
 }
+.drawerLink{
+  text-decoration: none;
+  color: inherit;
+}
+#logoLink {
+  text-decoration: none;
+  color: inherit;
+  pointer-events: stroke;
+}
+
+/*/////////////   Landing Page     ///////////////*/
+
 
 .landingRoot {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-margin: 60px;
+  margin: 60px;
 }
 
 #welcomeText {
@@ -62,10 +74,7 @@ margin: 60px;
 #welcomeSwitch{
   background-color: #ee6c4d;
 }
-.drawerLink{
-  text-decoration: none;
-  color: inherit;
-}
+
 
 /*//////////////////    Dashboard    //////////////////////*/
 
