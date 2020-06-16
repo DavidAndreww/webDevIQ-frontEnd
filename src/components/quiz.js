@@ -20,7 +20,7 @@ class Quiz extends Component {
 			return {
 				questions: QuizData[currentQuestion].question,
 				options: QuizData[currentQuestion].options,
-				answers: QuizData[currentQuestion].answer
+				answer: QuizData[currentQuestion].answer
 
 			}
 		}
@@ -31,13 +31,14 @@ class Quiz extends Component {
 	}
 
 	nextQuestionHandler = () => {
-		const{userAnswer, answer, score} = this.state
+		const {userAnswer, answer, score} = this.state;
+		console.log(userAnswer, answer)
 		this.setState({
 			currentQuestion: this.state.currentQuestion + 1
 		})
 		if(userAnswer === answer) {
 			this.setState({
-				score: score +1
+				score: score + 1
 			})
 		}
 	}
@@ -50,7 +51,7 @@ class Quiz extends Component {
 					disabled: true,
 					questions: QuizData[currentQuestion].question,
 					options: QuizData[currentQuestion].options,
-					answers: QuizData[currentQuestion].answer
+					answer: QuizData[currentQuestion].answer
 				}
 			})
 		}
@@ -76,7 +77,7 @@ class Quiz extends Component {
 		if (quizEnd) {
 			return (
 				<div>
-					<h2>Gave Finished final sore is {this.state.score}</h2>
+					<h2>you got {this.state.score} out of {QuizData.length}</h2>
 					
 				</div>
 			)
