@@ -7,7 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormDialog from '../components/submission'
+<<<<<<< HEAD
 import { username } from '../containers/dashboard';
+=======
+import { Link } from 'react-router-dom'
+>>>>>>> b4b9e8b22708728b086142edce5ea750b6be5b48
 
 
 const useStyles = makeStyles({
@@ -29,6 +33,9 @@ const useStyles = makeStyles({
 	actions: {
 		display: 'flex',
 		justifyContent: 'flex-end'
+	},
+	link: {
+		textDecoration: 'none'
 	}
 });
 
@@ -38,7 +45,7 @@ const Dashboard = (props) => {
 		javaScript: true,
 		react: true,
 		node: true,
-		angular: true
+		angular: false
 	});
 
 	const handleChange = (event) => {
@@ -53,7 +60,11 @@ const Dashboard = (props) => {
 	return (
 		<div className='dashRoot'>
 			<div id='welcomeUser'>
+<<<<<<< HEAD
 				Welcome, {username}!
+=======
+				Welcome, David and John.
+>>>>>>> b4b9e8b22708728b086142edce5ea750b6be5b48
 		</div>
 			<div className='userCards'>
 				<Card className={classes.root}>
@@ -65,7 +76,8 @@ const Dashboard = (props) => {
 						</div>
 					</CardContent>
 					<CardActions className={classes.actions}>
-						<Button variant="contained" id='practiceButton'>Practice More!</Button>
+						<Link className={classes.link} to='/quiz'>
+						<Button variant="contained" id='practiceButton'>Practice More!</Button></Link>
 					</CardActions>
 				</Card>
 				<Card className={classes.root}>
