@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import { QuizData } from './quizDataEx'
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+	link: {
+		textDecoration: 'none'
+	}
+});
 
 
 class Quiz extends Component {
+
+
 
 	state = {
 		userAnswer: null,
@@ -86,6 +96,7 @@ class Quiz extends Component {
 			return (
 				<div>
 					<h2>you got {this.state.score} out of {QuizData.length}</h2>
+					<Link to ='/dashboard' className='link'><Button id='practiceButton'>Return</Button></Link>
 
 				</div>
 			)
