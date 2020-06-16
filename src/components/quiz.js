@@ -31,12 +31,12 @@ class Quiz extends Component {
 	}
 
 	nextQuestionHandler = () => {
-		const {userAnswer, answer, score} = this.state;
+		const { userAnswer, answer, score } = this.state;
 		console.log(userAnswer, answer)
 		this.setState({
 			currentQuestion: this.state.currentQuestion + 1
 		})
-		if(userAnswer === answer) {
+		if (userAnswer === answer) {
 			this.setState({
 				score: score + 1
 			})
@@ -64,10 +64,18 @@ class Quiz extends Component {
 	}
 
 	finishHandler = () => {
+		const { score, userAnswer, answer } = this.state
 		if (this.state.currentQuestion === QuizData.length - 1) {
+			console.log(userAnswer, answer)
+			if (userAnswer === answer) {
+				this.setState({
+					score: score + 1
+				})
+			}
 			this.setState({
-				quizEnd: true
+				quizEnd: true,
 			})
+
 		}
 	}
 
@@ -78,7 +86,7 @@ class Quiz extends Component {
 			return (
 				<div>
 					<h2>you got {this.state.score} out of {QuizData.length}</h2>
-					
+
 				</div>
 			)
 		}
