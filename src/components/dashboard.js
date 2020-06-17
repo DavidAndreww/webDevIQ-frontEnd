@@ -63,6 +63,7 @@ const Dashboard = (props) => {
 					<CardContent>
 						<div id='scoreCard'>
 							<div className='cardTitle'>DevIQ Scorecard</div>
+							{/* let percentage = (userObject.correctAttempts / userObject.attempts * 100).toFixed(1) + '%' */}
 							<div id='scoreNum'>67.8%</div>
 							<p>This is your score based on your correct answers. Practice more to raise your score.</p>
 						</div>
