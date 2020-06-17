@@ -108,7 +108,7 @@ class Quiz extends Component {
 				{options.map(option => (
 					<Button
 						variant="contained"
-						key={option.id}
+						key={options.indexOf(option)}
 						id={userAnswer === option ? 'selected' : null}
 						onClick={() => this.checkAnswer(option)}>
 						{option}
