@@ -204,6 +204,10 @@ height: 500px;
   color: white;
   font-size: 20px;
  box-shadow: 3px 3px 3px #293241;
+ font-family: 'Inconsolata', monospace;
+ margin-bottom: 5px;
+
+
 }
 .link{
   text-decoration: none;
