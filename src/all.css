@@ -4,7 +4,9 @@ orange = #ee6c4d
 light navy = #3d5a80
 sky = #98c1d9
 ice = #e0fbfc */
-
+* {
+  font-family: 'Inconsolata', monospace;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
 
@@ -139,13 +141,13 @@ color: white;
 }
 #suggestionsButtonArea{
   display: flex;
-
   width: 100%;
   height: 35px;
   justify-content: space-between;
   margin-right: 45px;
   margin-top: 15px;
   align-items: center;
+  padding: 3px;
 }
 
 #suggestionCardHeading{
@@ -166,8 +168,12 @@ color: white;
   margin: 35px;
   color: white;
   align-items: center;
+  text-align: center;
+  text-shadow: 2px 2px 2px #293241;
+  font-size: 16px;
 }
 #donateButton{
+  margin-top: 10px;
   display: flex;
   background-color: #ee6c4d;
   color: white;
@@ -206,6 +212,7 @@ height: 500px;
  box-shadow: 3px 3px 3px #293241;
  font-family: 'Inconsolata', monospace;
  margin-bottom: 5px;
+ font-weight: 600;
 
 
 }
@@ -228,20 +235,26 @@ height: 500px;
 #nextDisabled {
   color: white;
   border: 1px solid white;
+  font-family: 'Inconsolata', monospace;
+
 }
 #nextEnabled {
   background-color: #ee6c4d;
   font-weight: 600;
   border: 1px solid white;
+  font-family: 'Inconsolata', monospace;
 
 }
 #finishButton{
   background-color: #ee6c4d;
   border: 1px solid white;
+  font-family: 'Inconsolata', monospace;
 
 }
 #nextButtonArea{
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  font-family: 'Inconsolata', monospace;
+
 }
