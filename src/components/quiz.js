@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { QuizData } from './quizDataEx'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
+import Paper from '@material-ui/core/Paper';
 
 
 class Quiz extends Component {
@@ -87,40 +88,55 @@ class Quiz extends Component {
 			return (
 				<div>
 					<h2>you got {this.state.score} out of {QuizData.length}</h2>
-					<Link to ='/dashboard' className='link'><Button id='practiceButton'>Return</Button></Link>
+					<Link to='/dashboard' className='link'><Button id='practiceButton'>Return</Button></Link>
 
 				</div>
 			)
 		}
 		return (
 			<div id='quizRoot'>
-				{questions}
-				<p>{`Question ${currentQuestion + 1} out of ${QuizData.length}`}</p>
-				{options.map(option => (
-					<Button
-						variant="contained"
-						key={options.indexOf(option)}
-						id={userAnswer === option ? 'selected' : null}
-						onClick={() => this.checkAnswer(option)}>
-						{option}
-					</Button>
-				))}
-				{currentQuestion < QuizData.length - 1 &&
-					<Button
-						disabled={this.state.disabled}
-						variant="contained"
-						color='primary'
-						onClick={this.nextQuestionHandler}>Next</Button>
-				}
-				{currentQuestion === QuizData.length - 1 &&
-					<Button
-						onClick={this.finishHandler}
-						variant="contained"
-						color='primary'>Finish</Button>
-				}
+				<div id='questionAnswer'>
+					<Paper id='questionPaper'>
+						<div id='question'>
+							{questions}
+						</div>
+					</Paper>
+
+					{options.map(option => (
+						<Button
+							variant="contained"
+							key={options.indexOf(option)}
+							id={userAnswer === option ? 'selected' : 'questionOption'}
+							onClick={() => this.checkAnswer(option)}
+							fullWidth>
+							{option}
+						</Button>
+					))}
+				</div>
+				<div id='nextButtonArea'>
+					{currentQuestion < QuizData.length - 1 &&
+						<Button
+							id={this.state.disabled ? 'nextDisabled' : 'nextEnabled'}
+							disabled={this.state.disabled}
+							variant="contained"
+							color='primary'
+							onClick={this.nextQuestionHandler}>Next</Button>
+
+					}
+					{currentQuestion === QuizData.length - 1 &&
+						<Button
+							id='finishButton'
+							onClick={this.finishHandler}
+							variant="contained"
+						>Finish</Button>
+					}
+				</div>
 			</div>
 		)
 	}
 }
 
 export default Quiz
+
+// number of question logic
+/* <div>{`Question ${currentQuestion + 1} out of ${QuizData.length}`} */

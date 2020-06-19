@@ -177,6 +177,9 @@ color: white;
 /* //////////////////    Quiz Page     ////////////////////*/
 
 #quizRoot {
+  border: 2px solid #293241;
+  border-radius: 8px;
+  padding: 15px;
   font-size: 300%;
   color: white;
   margin: 40px;
@@ -186,11 +189,55 @@ align-items: flex-start;
 justify-content: space-evenly;
 height: 500px;
 }
+#questionAnswer{
+  width: 100%;
+}
+#questionOption{
+  background-color: #e0fbfc;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Inconsolata', monospace;
+  margin-bottom: 5px;
+}
 #selected {
-  background-color: #ee6c4d;
-  font-size: 25px;
+  background-color: #98c1d9;
   color: white;
+  font-size: 20px;
+ box-shadow: 3px 3px 3px #293241;
 }
 .link{
   text-decoration: none;
+}
+
+#questionPaper {
+  padding: 15px;
+  background-color: #e0fbfc;
+  box-shadow: 3px 3px 3px #2932417a;
+  width: 96.33%;
+  margin-bottom: 30px;
+}
+#question{
+  font-size: 30px;
+  font-family: 'Inconsolata', monospace;
+
+}
+#nextDisabled {
+  color: white;
+  border: 1px solid white;
+}
+#nextEnabled {
+  background-color: #ee6c4d;
+  font-weight: 600;
+  border: 1px solid white;
+
+}
+#finishButton{
+  background-color: #ee6c4d;
+  border: 1px solid white;
+
+}
+#nextButtonArea{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
