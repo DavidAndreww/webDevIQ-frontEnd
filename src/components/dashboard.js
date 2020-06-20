@@ -49,6 +49,10 @@ const Dashboard = (props) => {
 		angular: false
 	});
 
+	const questionSelector = () => {
+		
+	}
+
 	const handleChange = (event) => {
 		setState({ ...state, [event.target.name]: event.target.checked });
 	};
@@ -75,7 +79,7 @@ const Dashboard = (props) => {
 					</CardContent>
 					<CardActions className={classes.actions}>
 						<Link className={classes.link} to='/quiz'>
-						<Button variant="contained" id='practiceButton'>Practice More!</Button></Link>
+						<Button onClick={questionSelector} variant="contained" id='practiceButton'>Practice More!</Button></Link>
 					</CardActions>
 				</Card>
 				<Card className={classes.root}>
