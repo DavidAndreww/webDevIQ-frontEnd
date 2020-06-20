@@ -10,6 +10,11 @@ import FormDialog from '../components/submission'
 import { Link } from 'react-router-dom'
 
 
+//essentially we are creating our own api. what are we supposed to do about storing the headlilne and a basic overview of the article on the dashboard? I just realized this is going to be an issue. In my mind when i was thinking about the suggestions spot it was just thinking like we were accessing an api that would have lik "headline" "summary" "link"
+
+// wuddya think? hard for me to style without thinking about this. maybe we just create an api!!!!
+
+
 const useStyles = makeStyles({
 	root: {
 		minWidth: 275,
@@ -141,15 +146,15 @@ const Dashboard = (props) => {
 			</div>
 			<div id='articleContainer'>
 				<Card className={classes.root2}>
-					<div className='articleCardTitle'>Inheritance</div>
+					<div className='articleCardTitle'>article headline here</div>
 				</Card>
 
-				<Card className={classes.root2}>					<div className='articleCardTitle'>Filter Method</div>
+				<Card className={classes.root2}>					<div className='articleCardTitle'>article headline here</div>
 				</Card>
 
 				<Card className={classes.root2}>
 					<div className='articleCardContainer'>
-										<div className='articleCardTitle'>Functional programming</div>
+										<div className='articleCardTitle'>article headline here</div>
 				<Button>Go to article</Button>
 				</div>
 				</Card>

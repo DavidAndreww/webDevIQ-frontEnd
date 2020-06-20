@@ -156,7 +156,11 @@ color: white;
   font-size: 150%;
   margin-left: 15px;
 }
-
+.articleCardTitle{
+  border-bottom: 1px solid #293241;
+  font-size: 18px;
+  padding: 5px;
+}
 
 #articleContainer{
   display: flex;
@@ -203,15 +207,16 @@ height: 500px;
   font-size: 20px;
   font-weight: 600;
   font-family: 'Inconsolata', monospace;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 #selected {
-  background-color: #98c1d9;
+  background-color: #293241;
+  border: 2px solid #ee6c4d;
   color: white;
   font-size: 20px;
  box-shadow: 3px 3px 3px #293241;
  font-family: 'Inconsolata', monospace;
- margin-bottom: 5px;
+ margin-bottom: 10px;
  font-weight: 600;
 
 
