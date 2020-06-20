@@ -40,7 +40,7 @@ const Dashboard = (props) => {
 	const [state, setState] = React.useState({
 		javaScript: true,
 		react: true,
-		node: true,
+		node: true,.my
 		angular: false
 	});
 
