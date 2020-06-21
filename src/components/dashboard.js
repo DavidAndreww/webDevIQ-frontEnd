@@ -48,9 +48,14 @@ const Dashboard = (props) => {
 		node: true,
 		angular: false
 	});
-
+	// pass into fetch request to use in body, dynamically passes in state keys that are true
 	const questionSelector = () => {
-		
+		let arr = Object.entries(state);
+		let selected = [];
+		arr.map(keyVal => {
+			keyVal[1] === true && selected.push(keyVal[0])
+		})
+		return selected
 	}
 
 	const handleChange = (event) => {
@@ -79,7 +84,7 @@ const Dashboard = (props) => {
 					</CardContent>
 					<CardActions className={classes.actions}>
 						<Link className={classes.link} to='/quiz'>
-						<Button onClick={questionSelector} variant="contained" id='practiceButton'>Practice More!</Button></Link>
+							<Button onClick={questionSelector} variant="contained" id='practiceButton'>Practice More!</Button></Link>
 					</CardActions>
 				</Card>
 				<Card className={classes.root}>
@@ -90,8 +95,8 @@ const Dashboard = (props) => {
 								<p>Turn on or off topics you would like to appear in your questions.</p>
 								<CardActions className={classes.actions}>
 									<div id='suggestionsButtonArea'>
-									Have suggesions on topics or questions?
-									<FormDialog/>
+										Have suggesions on topics or questions?
+									<FormDialog />
 									</div>
 								</CardActions>
 
@@ -158,9 +163,9 @@ const Dashboard = (props) => {
 
 				<Card className={classes.root2}>
 					<div className='articleCardContainer'>
-										<div className='articleCardTitle'>article headline here</div>
-				<Button>Go to article</Button>
-				</div>
+						<div className='articleCardTitle'>article headline here</div>
+						<Button>Go to article</Button>
+					</div>
 				</Card>
 
 			</div>
@@ -168,7 +173,7 @@ const Dashboard = (props) => {
 				As many old and new developers know, projects like these take time and money for us to provide them as a service. If you find this site useful or just want to support us in our journey through the development world, please consider donating.
 				<div>
 					<Button variant='contained' id='donateButton'>Donate!</Button>
-					</div> 
+				</div>
 			</div>
 		</div>
 	)
