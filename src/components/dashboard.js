@@ -14,6 +14,9 @@ import { Link } from 'react-router-dom'
 
 // wuddya think? hard for me to style without thinking about this. maybe we just create an api!!!!
 
+//6/22/20
+// Touche, that is a problem. I just googled, and maybe I'm just tired, but I can't figure out how a rest API is different from what we have as far as creating the API and storing data. Could we add a new table for resource data? I know we can use the foreign key to tie each resource in the resource table to the corresponding question in the question table. The resource table could have id, name, description, link, and we could store multiple (article, video) for each question. Let me know if this is anywhere near what you were thinking, lol. 
+
 
 const useStyles = makeStyles({
 	root: {
