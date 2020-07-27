@@ -60,7 +60,7 @@ const Dashboard = (props) => {
   };
 
   const startQuiz = () => {
-    fetch("http://localhost:3030/questions", {
+    fetch("http://localhost:3030/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
