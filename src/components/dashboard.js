@@ -61,11 +61,11 @@ const Dashboard = (props) => {
 
   const startQuiz = () => {
 	  console.log(questionSelector())
-    fetch("http://localhost:3030/questions", {
+    fetch("http://localhost:3030/quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        quetions: questionSelector(),
+        questions: questionSelector(),
       }),
     })
       .then((response) => response.json())
@@ -97,7 +97,7 @@ const Dashboard = (props) => {
             </div>
           </CardContent>
           <CardActions className={classes.actions}>
-            <Link className={classes.link} to="/quiz">
+            {/* <Link className={classes.link} to="/quiz"> */}
               <Button
                 onClick={startQuiz}
                 variant="contained"
@@ -105,7 +105,7 @@ const Dashboard = (props) => {
               >
                 Practice More!
               </Button>
-            </Link>
+            {/* </Link> */}
           </CardActions>
         </Card>
         <Card className={classes.root}>
