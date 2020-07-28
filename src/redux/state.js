@@ -5,7 +5,7 @@ const state = {
         questionsAttempted: 224,
         correctAnswers: 200
     },
-    questionList: ''
+    questionList: null
 };
 
 export default state;

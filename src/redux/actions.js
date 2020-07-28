@@ -18,3 +18,10 @@ export const loadQuestions = (questions) => {
     value: questions,
   };
 };
+
+export const clearQuestions = () => {
+  return {
+    type: 'CLEAR_QUESTIONS',
+    value: []
+  }
+}
