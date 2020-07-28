@@ -11,3 +11,11 @@ export const login = (payload) => {
         })
     }
 }
+
+export const loadQuestions = (questions) => {
+    console.log(questions)
+    return {
+        type: 'QUESTIONS',
+        value: questions
+    }
+}

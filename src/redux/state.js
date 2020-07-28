@@ -1,9 +1,9 @@
 const state = {
     userObject: {
         id: 1,
-        username: '#1DevNA',
+        username: 'Test User #1',
         questionsAttempted: 224,
-        correctAnswers: 151
+        correctAnswers: 200
     },
     questionList: []
 };

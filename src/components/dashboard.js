@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Switch from "@material-ui/core/Switch";
 import FormDialog from "../components/submission";
 import { Link } from "react-router-dom";
+import { loadQuestions } from "../redux/actions";
 
 //essentially we are creating our own api. what are we supposed to do about storing the headlilne and a basic overview of the article on the dashboard? I just realized this is going to be an issue. In my mind when i was thinking about the suggestions spot it was just thinking like we were accessing an api that would have lik "headline" "summary" "link"
 
@@ -49,18 +50,22 @@ const Dashboard = (props) => {
     node: true,
     angular: false,
   });
+
+  // redux hook, how you doin?
+  const userObject = useSelector((state) => state.userObject);
+  const dispatch = useDispatch(); //pass action in here
   // pass into fetch request to use in body, dynamically passes in state keys that are true
-  const questionSelector = () => {
+
+  function questionSelector() {
     let arr = Object.entries(state);
     let selected = [];
     arr.map((keyVal) => {
       keyVal[1] === true && selected.push(keyVal[0]);
     });
     return selected;
-  };
+  }
 
   const startQuiz = () => {
-	  console.log(questionSelector())
     fetch("http://localhost:3030/quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -69,27 +74,29 @@ const Dashboard = (props) => {
       }),
     })
       .then((response) => response.json())
-      .then((res) => console.log(res));
+      .then((res) => dispatch(loadQuestions(res)));
   };
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  // redux hook, how you doin?
-  const username = useSelector((state) => state.username);
-  const dispatch = useDispatch(); //pass action in here
-
   return (
     <div className="dashRoot">
-      <div id="welcomeUser">Welcome, David and John.</div>
+      <div id="welcomeUser">Welcome, {userObject.username}</div>
       <div className="userCards">
         <Card className={classes.root}>
           <CardContent>
             <div id="scoreCard">
               <div className="cardTitle">DevIQ Scorecard</div>
               {/* let percentage = (userObject.correctAttempts / userObject.attempts * 100).toFixed(1) + '%' */}
-              <div id="scoreNum">67.8%</div>
+              <div id="scoreNum">
+                {(
+                  (userObject.correctAnswers / userObject.questionsAttempted) *
+                  100
+                ).toFixed(1)}
+                %
+              </div>
               <p>
                 This is your score based on your correct answers. Practice more
                 to raise your score.
@@ -98,13 +105,9 @@ const Dashboard = (props) => {
           </CardContent>
           <CardActions className={classes.actions}>
             {/* <Link className={classes.link} to="/quiz"> */}
-              <Button
-                onClick={startQuiz}
-                variant="contained"
-                id="practiceButton"
-              >
-                Practice More!
-              </Button>
+            <Button onClick={startQuiz} variant="contained" id="practiceButton">
+              Practice More!
+            </Button>
             {/* </Link> */}
           </CardActions>
         </Card>

@@ -3,6 +3,8 @@ import { QuizData } from './quizDataEx'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
+import { questionList } from '../redux/actions'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 class Quiz extends Component {
