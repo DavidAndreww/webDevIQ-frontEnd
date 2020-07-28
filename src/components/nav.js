@@ -116,7 +116,7 @@ export default function ButtonAppBar() {
     <div>
       <AppBar position="static">
         <Toolbar className={classes.root}>
-          <img src='https://i.imgur.com/xv6hPO8.png'id='logo'></img>
+          <img src='https://i.imgur.com/xv6hPO8.png'id='logo' alt="DevIQ Logo"></img>
           
           <Typography variant="h6" className={classes.title}>
            <Link id='logoLink' to='/dashboard'>DevIQ</Link> 

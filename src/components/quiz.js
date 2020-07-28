@@ -4,23 +4,24 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import { useSelector, useDispatch } from 'react-redux'
+import {useState, useEffect } from 'react'
 
 // const questionList = useSelector((state) => state.userObject);
 
-class Quiz extends Component {
+const Quiz = () => {
 
-	state = {
-		userAnswer: null,
-		currentQuestion: 0,
-		options: [],
-		quizEnd: false,
-		score: 0,
-		disabled: true,
-	}
+	// state = {
+	// 	userAnswer: null,
+	// 	currentQuestion: 0,
+	// 	options: [],
+	// 	quizEnd: false,
+	// 	score: 0,
+	// 	disabled: true,
+	// }
 	 
 	
 
-	loadQuiz = () => {
+	const loadQuiz = () => {
 		const { currentQuestion } = this.state;
 		this.setState(() => {
 			return {
@@ -32,11 +33,11 @@ class Quiz extends Component {
 		}
 		)
 	}
-	componentDidMount() {
-		this.loadQuiz();
-	}
+	useEffect(()=>{
+		loadQuiz()
+	})
 
-	nextQuestionHandler = () => {
+	const nextQuestionHandler = () => {
 		const { userAnswer, answer, score } = this.state;
 		console.log(userAnswer, answer)
 		this.setState({
@@ -49,27 +50,27 @@ class Quiz extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		const { currentQuestion } = this.state
-		if (this.state.currentQuestion !== prevState.currentQuestion) {
-			this.setState(() => {
-				return {
-					disabled: true,
-					questions: QuizData[currentQuestion].question,
-					options: QuizData[currentQuestion].options,
-					answer: QuizData[currentQuestion].answer
-				}
-			})
-		}
-	}
-	checkAnswer = answer => {
+	// componentDidUpdate(prevProps, prevState) {
+	// 	const { currentQuestion } = this.state
+	// 	if (this.state.currentQuestion !== prevState.currentQuestion) {
+	// 		this.setState(() => {
+	// 			return {
+	// 				disabled: true,
+	// 				questions: QuizData[currentQuestion].question,
+	// 				options: QuizData[currentQuestion].options,
+	// 				answer: QuizData[currentQuestion].answer
+	// 			}
+	// 		})
+	// 	}
+	// }
+	const checkAnswer = answer => {
 		this.setState({
 			userAnswer: answer,
 			disabled: false
 		})
 	}
 
-	finishHandler = () => {
+	const finishHandler = () => {
 		const { score, userAnswer, answer } = this.state
 		if (this.state.currentQuestion === QuizData.length - 1) {
 			console.log(userAnswer, answer)
@@ -85,7 +86,7 @@ class Quiz extends Component {
 		}
 	}
 
-	render() {
+	
 		
 		const { questions, options, currentQuestion, userAnswer, quizEnd } = this.state
 		if (quizEnd) {
@@ -138,7 +139,7 @@ class Quiz extends Component {
 			</div>
 		)
 	}
-}
+
 
 export default Quiz
 
