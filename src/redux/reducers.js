@@ -9,9 +9,8 @@ const userObject = (state = null, action) => {
 
 const questionList = (state = null, action) => {
   switch (action.type) {
-      case 'QUESTIONS':
-          console.log('questionList reducer: ', action.value)
-          return action.value;
+    case "QUESTIONS":
+      return action.value;
     default:
       return state;
   }
