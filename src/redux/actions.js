@@ -1,21 +1,20 @@
 export const login = (payload) => {
-    return (dispatch) => {
-        fetch('path', payload)
-        .then(res => res.json)
-        .then(response =>{
-            const action = {
-                type: 'LOGIN',
-                value: response
-            }
-            dispatch(action)
-        })
-    }
-}
+  return (dispatch) => {
+    fetch("path", payload)
+      .then((res) => res.json)
+      .then((response) => {
+        const action = {
+          type: "LOGIN",
+          value: response,
+        };
+        dispatch(action);
+      });
+  };
+};
 
 export const loadQuestions = (questions) => {
-    console.log(questions)
-    return {
-        type: 'QUESTIONS',
-        value: questions
-    }
-}
+  return {
+    type: "QUESTIONS",
+    value: questions,
+  };
+};
