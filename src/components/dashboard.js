@@ -89,7 +89,6 @@ const Dashboard = (props) => {
           <CardContent>
             <div id="scoreCard">
               <div className="cardTitle">DevIQ Scorecard</div>
-              {/* let percentage = (userObject.correctAttempts / userObject.attempts * 100).toFixed(1) + '%' */}
               <div id="scoreNum">
                 {(
                   (userObject.correctAnswers / userObject.questionsAttempted) *
@@ -104,11 +103,11 @@ const Dashboard = (props) => {
             </div>
           </CardContent>
           <CardActions className={classes.actions}>
-            {/* <Link className={classes.link} to="/quiz"> */}
+            <Link className={classes.link} to="/quiz">
             <Button onClick={startQuiz} variant="contained" id="practiceButton">
               Practice More!
             </Button>
-            {/* </Link> */}
+            </Link>
           </CardActions>
         </Card>
         <Card className={classes.root}>

@@ -3,9 +3,9 @@ import { QuizData } from './quizDataEx'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
-import { questionList } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 
+// const questionList = useSelector((state) => state.userObject);
 
 class Quiz extends Component {
 
@@ -17,6 +17,8 @@ class Quiz extends Component {
 		score: 0,
 		disabled: true,
 	}
+	 
+	
 
 	loadQuiz = () => {
 		const { currentQuestion } = this.state;
@@ -84,8 +86,8 @@ class Quiz extends Component {
 	}
 
 	render() {
+		
 		const { questions, options, currentQuestion, userAnswer, quizEnd } = this.state
-
 		if (quizEnd) {
 			return (
 				<div>
