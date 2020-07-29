@@ -53,8 +53,7 @@ const Dashboard = (props) => {
 
   // redux hook, how you doin?
   const userObject = useSelector((state) => state.userObject);
-  const dispatch = useDispatch(); //pass action in here
-  // pass into fetch request to use in body, dynamically passes in state keys that are true
+  const dispatch = useDispatch(); 
 
   function questionSelector() {
     let arr = Object.entries(state);
@@ -74,7 +73,7 @@ const Dashboard = (props) => {
       }),
     })
       .then((response) => response.json())
-      .then((res) => dispatch(loadQuestions(res)));
+      .then((res) => dispatch(loadQuestions(res)))
   };
 
   const handleChange = (event) => {

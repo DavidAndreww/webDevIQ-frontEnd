@@ -8,21 +8,20 @@ import { useState, useEffect } from "react";
 import { clearQuestions } from "../redux/actions";
 
 const Quiz = () => {
-  // let [questions, setQuestions] = useState(null);
   let [questionIdx, setQuestionIdx] = useState(0);
-  let [userAnswer, setSelectedAnswer] = useState(null);
-  //   let [incorrectAnswers, setIncorrectAnswer] = useState([]);
-  //   let [correctAnswers, setCorrectAnswer] = useState([]);
-  //   let [quizEnd, toggleQuizEnd] = useState(false);
+  let [selectedAnswer, setSelectedAnswer] = useState(null);
+  let [incorrectAnswers, setIncorrectAnswer] = useState([]);
+  let [correctAnswers, setCorrectAnswer] = useState([]);
+  let [quizEnd, toggleQuizEnd] = useState(false);
   let [score, setScore] = useState(0);
   let [disabled, toggledDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
+  const localQuestions = useSelector((state) => state.questionList);
+  console.log("localQuestions: ", localQuestions);
   // const questionList = useSelector((state) => state.questionList);
   // console.log("QList", questionList);
-  const localQuestions = useSelector((state) => state.questionList);
-  console.log(localQuestions);
   // if(localQuestions !== null && localQuestions.length > 0){
 
   //   console.log("local: ", localQuestions[0].options.split(','));
@@ -63,23 +62,29 @@ const Quiz = () => {
   // 	}
   // }
 
-  const nextQuestionHandler = () => {
-    if (selectedAnswer === localQuestions[questionIdx].answer) {
-      setScore(score++);
-    }
-    setQuestionIdx(questionIdx++);
-  };
-
-  const selectedAnswer = (e) => {
+  const toggleSelectedAnswer = (e) => {
     setSelectedAnswer(e.target.innerHTML);
-    toggledDisabled(false);
+    disabled && toggledDisabled(false);
+    console.log(selectedAnswer);
+  };
+  const nextQuestionHandler = () => {
+    let answer = localQuestions[questionIdx].answer;
+    let answer2 = " " + localQuestions[questionIdx].answer;
+    if (selectedAnswer === answer || selectedAnswer === answer2) {
+      console.log("it da same");
+      setScore(score++);
+      setCorrectAnswer([...correctAnswers, localQuestions[questionIdx].id]);
+    }
+    console.log("correctAnswerArray: ", correctAnswers);
+    setQuestionIdx(questionIdx + 1);
+    toggledDisabled(true);
   };
 
   const finishHandler = () => {
-    const { score, userAnswer, answer } = this.state;
+    const { score, selectedAnswer, answer } = this.state;
     if (this.state.currentQuestion === QuizData.length - 1) {
-      console.log(userAnswer, answer);
-      if (userAnswer === answer) {
+      console.log(selectedAnswer, answer);
+      if (selectedAnswer === answer) {
         this.setState({
           score: score + 1,
         });
@@ -90,15 +95,20 @@ const Quiz = () => {
     }
   };
 
-  if (!localQuestions) {
-    return <p>Loading....</p>;
+  if (localQuestions === null || localQuestions === []) {
+    return <p>Loading Data....</p>;
   }
-  if (questionIdx === localQuestions.length) {
+  if (quizEnd === true) {
     return (
       <div>
         <h2>you got {score} out of 2</h2>
         <Link to="/dashboard" className="link">
-          <Button id="practiceButton">Return</Button>
+          <Button
+            id="practiceButton"
+            onClick={() => dispatch(clearQuestions())}
+          >
+            Return
+          </Button>
         </Link>
       </div>
     );
@@ -108,18 +118,18 @@ const Quiz = () => {
       <div id="quizRoot">
         <div id="questionAnswer">
           <Paper id="questionPaper">
-            <div id="question">{localQuestions[0].question}</div>
+            <div id="question">{localQuestions[questionIdx].question}</div>
           </Paper>
 
-          {localQuestions[0].options.split(",").map((option) => (
+          {localQuestions[questionIdx].options.split(",").map((question) => (
             <Button
               variant="contained"
-              key={option.id}
-              id={userAnswer === option ? "selected" : "questionOption"}
-              onClick={(e) => selectedAnswer(e)}
+              key={question}
+              id={selectedAnswer === question ? "selected" : "questionOption"}
+              onClick={(e) => toggleSelectedAnswer(e)}
               fullWidth
             >
-              {option}
+              {question}
             </Button>
           ))}
         </div>
