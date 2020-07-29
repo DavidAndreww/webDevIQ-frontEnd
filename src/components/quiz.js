@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { clearQuestions } from "../redux/actions";
 
 const Quiz = () => {
-  let [questions, setQuestions] = useState(null);
+  // let [questions, setQuestions] = useState(null);
   let [questionIdx, setQuestionIdx] = useState(0);
   //   let [userAnswer, setUserAnswer] = useState(null);
   //   let [incorrectAnswers, setIncorrectAnswer] = useState([]);
@@ -20,17 +20,16 @@ const Quiz = () => {
   const dispatch = useDispatch();
 
   const questionList = useSelector((state) => state.questionList);
-  
-  // need to wait for questionList to populate from redux state
-  // set local question variable to that list of questions
-  // clear redux state of questions loaded during fetch in dashboard
-  // prevents same set of questions being pulled when user runs quiz next time
+  console.log("QList", questionList);
+  const localQuestions = questionList;
+  if(localQuestions !== null && localQuestions.length > 0){
 
+    console.log("local: ", localQuestions[0].options.split(','));
+  }
+  // setQuestions(questionList)
 
-    // setQuestions(questionList);
-    // dispatch(clearQuestions());
-  
-  console.log(questionList);
+  // setQuestions(questionList);
+  // dispatch(clearQuestions());
 
   //   const loadQuiz = () => {
   //     setQuestions(questionList);
@@ -97,64 +96,64 @@ const Quiz = () => {
   //     }
   //   };
 
-  // if (typeof questions !== 'object') {
-  //   return <p>Loading....</p>;
-  // }
-  //   if (questionIdx === 0)
-  return (
-    <div>
-      <h2>
-        you got {score} out of 2 {/* need to add questions length here */}
-      </h2>
-      <Link to="/dashboard" className="link">
-        <Button id="practiceButton">Return</Button>
-      </Link>
-    </div>
-  );
+  if (!localQuestions) {
+    return <p>Loading....</p>;
+  }
+  if (questionIdx === localQuestions.length) {
+    return (
+      <div>
+        <h2>you got {score} out of 2</h2>
+        <Link to="/dashboard" className="link">
+          <Button id="practiceButton">Return</Button>
+        </Link>
+      </div>
+    );
+  }
+  if (localQuestions) {
+    return (
+      <div id="quizRoot">
+        <div id="questionAnswer">
+          <Paper id="questionPaper">
+            <div id="question">{localQuestions[0].question}</div>
+          </Paper>
 
-  //   return (
-  //     <div id="quizRoot">
-  //       <div id="questionAnswer">
-  //         <Paper id="questionPaper">
-  //           <div id="question">{questions[0].question}</div>
-  //         </Paper>
-
-  //         {this.state.options.map((option) => (
-  //           <Button
-  //             variant="contained"
-  //             key={this.state.options.indexOf(option)}
-  //             id={userAnswer === option ? "selected" : "questionOption"}
-  //             onClick={() => this.checkAnswer(option)}
-  //             fullWidth
-  //           >
-  //             {option}
-  //           </Button>
-  //         ))}
-  //       </div>
-  //       <div id="nextButtonArea">
-  //         {this.state.currentQuestion < QuizData.length - 1 && (
-  //           <Button
-  //             id={this.state.disabled ? "nextDisabled" : "nextEnabled"}
-  //             disabled={this.state.disabled}
-  //             variant="contained"
-  //             color="primary"
-  //             onClick={this.nextQuestionHandler}
-  //           >
-  //             Next
-  //           </Button>
-  //         )}
-  //         {this.state.currentQuestion === QuizData.length - 1 && (
-  //           <Button
-  //             id="finishButton"
-  //             onClick={this.finishHandler}
-  //             variant="contained"
-  //           >
-  //             Finish
-  //           </Button>
-  //         )}
-  //       </div>
-  //     </div>
-  //   );
+          {localQuestions[0].options.split(',').map((option) => (
+            <Button
+              variant="contained"
+              key={option.id}
+              // id={userAnswer === option ? "selected" : "questionOption"}
+              onClick={() => this.checkAnswer(option)}
+              fullWidth
+            >
+              {option}
+            </Button>
+          ))}
+        </div>
+        <div id="nextButtonArea">
+          {this.state.currentQuestion < localQuestions.length - 1 && (
+            <Button
+              id={this.state.disabled ? "nextDisabled" : "nextEnabled"}
+              disabled={this.state.disabled}
+              variant="contained"
+              color="primary"
+              onClick={this.nextQuestionHandler}
+            >
+              Next
+            </Button>
+          )}
+          {this.state.currentQuestion === QuizData.length - 1 && (
+            <Button
+              id="finishButton"
+              onClick={this.finishHandler}
+              variant="contained"
+            >
+              Finish
+            </Button>
+          )}
+        </div>
+      </div>
+    );
+  }
 };
 export default Quiz;
 
