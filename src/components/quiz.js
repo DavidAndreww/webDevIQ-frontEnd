@@ -10,22 +10,23 @@ import { clearQuestions } from "../redux/actions";
 const Quiz = () => {
   // let [questions, setQuestions] = useState(null);
   let [questionIdx, setQuestionIdx] = useState(0);
-  //   let [userAnswer, setUserAnswer] = useState(null);
+  let [userAnswer, setSelectedAnswer] = useState(null);
   //   let [incorrectAnswers, setIncorrectAnswer] = useState([]);
   //   let [correctAnswers, setCorrectAnswer] = useState([]);
   //   let [quizEnd, toggleQuizEnd] = useState(false);
   let [score, setScore] = useState(0);
-  //   let [disabled, toggledDisabled] = useState(true);
+  let [disabled, toggledDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
-  const questionList = useSelector((state) => state.questionList);
-  console.log("QList", questionList);
-  const localQuestions = questionList;
-  if(localQuestions !== null && localQuestions.length > 0){
+  // const questionList = useSelector((state) => state.questionList);
+  // console.log("QList", questionList);
+  const localQuestions = useSelector((state) => state.questionList);
+  console.log(localQuestions);
+  // if(localQuestions !== null && localQuestions.length > 0){
 
-    console.log("local: ", localQuestions[0].options.split(','));
-  }
+  //   console.log("local: ", localQuestions[0].options.split(','));
+  // }
   // setQuestions(questionList)
 
   // setQuestions(questionList);
@@ -48,19 +49,6 @@ const Quiz = () => {
   //     loadQuiz();
   //   });
 
-  //   const nextQuestionHandler = () => {
-  //     const { userAnswer, answer, score } = this.state;
-  //     console.log(userAnswer, answer);
-  //     this.setState({
-  //       currentQuestion: this.state.currentQuestion + 1,
-  //     });
-  //     if (userAnswer === answer) {
-  //       this.setState({
-  //         score: score + 1,
-  //       });
-  //     }
-  //   };
-
   // componentDidUpdate(prevProps, prevState) {
   // 	const { currentQuestion } = this.state
   // 	if (this.state.currentQuestion !== prevState.currentQuestion) {
@@ -74,27 +62,33 @@ const Quiz = () => {
   // 		})
   // 	}
   // }
-  //   const checkAnswer = (answer) => {
-  //     this.setState({
-  //       userAnswer: answer,
-  //       disabled: false,
-  //     });
-  //   };
 
-  //   const finishHandler = () => {
-  //     const { score, userAnswer, answer } = this.state;
-  //     if (this.state.currentQuestion === QuizData.length - 1) {
-  //       console.log(userAnswer, answer);
-  //       if (userAnswer === answer) {
-  //         this.setState({
-  //           score: score + 1,
-  //         });
-  //       }
-  //       this.setState({
-  //         quizEnd: true,
-  //       });
-  //     }
-  //   };
+  const nextQuestionHandler = () => {
+    if (selectedAnswer === localQuestions[questionIdx].answer) {
+      setScore(score++);
+    }
+    setQuestionIdx(questionIdx++);
+  };
+
+  const selectedAnswer = (e) => {
+    setSelectedAnswer(e.target.innerHTML);
+    toggledDisabled(false);
+  };
+
+  const finishHandler = () => {
+    const { score, userAnswer, answer } = this.state;
+    if (this.state.currentQuestion === QuizData.length - 1) {
+      console.log(userAnswer, answer);
+      if (userAnswer === answer) {
+        this.setState({
+          score: score + 1,
+        });
+      }
+      this.setState({
+        quizEnd: true,
+      });
+    }
+  };
 
   if (!localQuestions) {
     return <p>Loading....</p>;
@@ -117,12 +111,12 @@ const Quiz = () => {
             <div id="question">{localQuestions[0].question}</div>
           </Paper>
 
-          {localQuestions[0].options.split(',').map((option) => (
+          {localQuestions[0].options.split(",").map((option) => (
             <Button
               variant="contained"
               key={option.id}
-              // id={userAnswer === option ? "selected" : "questionOption"}
-              onClick={() => this.checkAnswer(option)}
+              id={userAnswer === option ? "selected" : "questionOption"}
+              onClick={(e) => selectedAnswer(e)}
               fullWidth
             >
               {option}
@@ -130,21 +124,21 @@ const Quiz = () => {
           ))}
         </div>
         <div id="nextButtonArea">
-          {this.state.currentQuestion < localQuestions.length - 1 && (
+          {questionIdx < localQuestions.length - 1 && (
             <Button
-              id={this.state.disabled ? "nextDisabled" : "nextEnabled"}
-              disabled={this.state.disabled}
+              id={disabled ? "nextDisabled" : "nextEnabled"}
+              disabled={disabled}
               variant="contained"
               color="primary"
-              onClick={this.nextQuestionHandler}
+              onClick={nextQuestionHandler}
             >
               Next
             </Button>
           )}
-          {this.state.currentQuestion === QuizData.length - 1 && (
+          {questionIdx === localQuestions.length - 1 && (
             <Button
               id="finishButton"
-              onClick={this.finishHandler}
+              onClick={finishHandler}
               variant="contained"
             >
               Finish
