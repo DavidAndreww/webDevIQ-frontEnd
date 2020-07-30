@@ -75,8 +75,8 @@ const Quiz = () => {
       console.log("wrong answer");
       setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
     } else {
-      console.log('correct answer')
-      setScore(score++);
+      setScore(score + 1);
+      console.log('score: ', score)
     }
     console.log("incorrectAnswerArray: ", incorrectAnswers);
     setQuestionIdx(questionIdx + 1);
@@ -101,10 +101,10 @@ const Quiz = () => {
   if (localQuestions === null || localQuestions === []) {
     return <p>Loading Data....</p>;
   }
-  if (quizEnd === true) {
+  if (questionIdx === localQuestions.length -1) {
     return (
       <div>
-        <h2>you got {score} out of 2</h2>
+        <h2>you got {score} out of {localQuestions.length}</h2>
         <Link to="/dashboard" className="link">
           <Button
             id="practiceButton"

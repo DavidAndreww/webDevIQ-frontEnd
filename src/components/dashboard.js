@@ -55,8 +55,8 @@ const Dashboard = (props) => {
   const userObject = useSelector((state) => state.userObject);
   const dispatch = useDispatch(); 
 
-  function questionSelector() {
-    let arr = Object.entries(state);
+  function questionSelector(array) {
+    let arr = Object.entries(array);
     let selected = [];
     arr.map((keyVal) => {
       keyVal[1] === true && selected.push(keyVal[0]);
@@ -69,7 +69,7 @@ const Dashboard = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        questions: questionSelector(),
+        questions: questionSelector(state),
       }),
     })
       .then((response) => response.json())
