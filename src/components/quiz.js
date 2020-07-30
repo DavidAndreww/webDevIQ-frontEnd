@@ -11,7 +11,6 @@ const Quiz = () => {
   let [questionIdx, setQuestionIdx] = useState(0);
   let [selectedAnswer, setSelectedAnswer] = useState(null);
   let [incorrectAnswers, setIncorrectAnswer] = useState([]);
-  let [correctAnswers, setCorrectAnswer] = useState([]);
   let [quizEnd, toggleQuizEnd] = useState(false);
   let [score, setScore] = useState(0);
   let [disabled, toggledDisabled] = useState(true);
@@ -68,14 +67,18 @@ const Quiz = () => {
     console.log(selectedAnswer);
   };
   const nextQuestionHandler = () => {
-    let answer = localQuestions[questionIdx].answer;
-    let answer2 = " " + localQuestions[questionIdx].answer;
-    if (selectedAnswer === answer || selectedAnswer === answer2) {
-      console.log("it da same");
+    // when splitting during the localQuestions.map, an extra '' is added before all answers following a comma, resulting in mismatched values for comparison. hence these two vars
+    // let answer = localQuestions[questionIdx].answer;
+    let trimmedAnswer = selectedAnswer.trim()
+
+    if (trimmedAnswer !== localQuestions[questionIdx].answer) {
+      console.log("wrong answer");
+      setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
+    } else {
+      console.log('correct answer')
       setScore(score++);
-      setCorrectAnswer([...correctAnswers, localQuestions[questionIdx].id]);
     }
-    console.log("correctAnswerArray: ", correctAnswers);
+    console.log("incorrectAnswerArray: ", incorrectAnswers);
     setQuestionIdx(questionIdx + 1);
     toggledDisabled(true);
   };
