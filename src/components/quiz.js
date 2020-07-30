@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import { QuizData } from "./quizDataEx";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { clearQuestions } from "../redux/actions";
 
 const Quiz = () => {
