@@ -22,6 +22,6 @@ export const loadQuestions = (questions) => {
 export const clearQuestions = () => {
   return {
     type: 'CLEAR_QUESTIONS',
-    value: []
+    value: null
   }
 }

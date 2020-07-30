@@ -8,11 +8,17 @@ import { useState, useEffect } from "react";
 import { clearQuestions } from "../redux/actions";
 
 const Quiz = () => {
+  // int used to iterate over array of questions. increments when 'next' buttin is clicked
   let [questionIdx, setQuestionIdx] = useState(0);
+  // currently selected answer
   let [selectedAnswer, setSelectedAnswer] = useState(null);
+  // store of incorrect answers, used to fetch appropriate reference material
   let [incorrectAnswers, setIncorrectAnswer] = useState([]);
+  // used for conditionally rendering quiz results data
   let [quizEnd, toggleQuizEnd] = useState(false);
+  // tracks total questions answered correctly
   let [score, setScore] = useState(0);
+  // toggled to limit user ability to use next button if answer has not been selected
   let [disabled, toggledDisabled] = useState(true);
 
   const dispatch = useDispatch();
@@ -36,6 +42,7 @@ const Quiz = () => {
     }
     if (questionIdx === localQuestions.length - 1) {
       toggleQuizEnd(true);
+      console.log("fetch resources");
       // fetch request to pull resources OR update user object
     }
     setQuestionIdx(questionIdx + 1);
@@ -44,7 +51,9 @@ const Quiz = () => {
 
   const returnToDash = () => {
     dispatch(clearQuestions());
+    console.log("fetch user obj");
     // fetch request to pull update user object or pull resources
+    console.log(incorrectAnswers);
   };
 
   if (localQuestions === null || localQuestions === []) {
