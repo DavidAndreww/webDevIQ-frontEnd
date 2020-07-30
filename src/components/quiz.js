@@ -19,97 +19,46 @@ const Quiz = () => {
 
   const localQuestions = useSelector((state) => state.questionList);
   console.log("localQuestions: ", localQuestions);
-  // const questionList = useSelector((state) => state.questionList);
-  // console.log("QList", questionList);
-  // if(localQuestions !== null && localQuestions.length > 0){
 
-  //   console.log("local: ", localQuestions[0].options.split(','));
-  // }
-  // setQuestions(questionList)
-
-  // setQuestions(questionList);
-  // dispatch(clearQuestions());
-
-  //   const loadQuiz = () => {
-  //     setQuestions(questionList);
-  //     // const { currentQuestion } = this.state;
-  //     //   this.setState(() => {
-  //     //     return {
-  //     //       questions: QuizData[currentQuestion].question,
-  //     //       options: QuizData[currentQuestion].options,
-  //     //       answer: QuizData[currentQuestion].answer,
-  //     //     };
-  // 	//   });
-  // 	console.log(questions)
-  //   };
-
-  //   useEffect(() => {
-  //     loadQuiz();
-  //   });
-
-  // componentDidUpdate(prevProps, prevState) {
-  // 	const { currentQuestion } = this.state
-  // 	if (this.state.currentQuestion !== prevState.currentQuestion) {
-  // 		this.setState(() => {
-  // 			return {
-  // 				disabled: true,
-  // 				questions: QuizData[currentQuestion].question,
-  // 				options: QuizData[currentQuestion].options,
-  // 				answer: QuizData[currentQuestion].answer
-  // 			}
-  // 		})
-  // 	}
-  // }
-
-  const toggleSelectedAnswer = (e) => {
-    setSelectedAnswer(e.target.innerHTML);
+  const toggleSelectedAnswer = (answer) => {
+    setSelectedAnswer(answer);
     disabled && toggledDisabled(false);
-    console.log(selectedAnswer);
   };
+
   const nextQuestionHandler = () => {
-    // when splitting during the localQuestions.map, an extra '' is added before all answers following a comma, resulting in mismatched values for comparison. hence these two vars
-    // let answer = localQuestions[questionIdx].answer;
-    let trimmedAnswer = selectedAnswer.trim()
+    let trimmedAnswer = selectedAnswer.trim();
 
     if (trimmedAnswer !== localQuestions[questionIdx].answer) {
-      console.log("wrong answer");
       setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
-    } else {
-      setScore(score + 1);
-      console.log('score: ', score)
     }
-    console.log("incorrectAnswerArray: ", incorrectAnswers);
+    if (trimmedAnswer === localQuestions[questionIdx].answer) {
+      setScore(score + 1);
+    }
+    if (questionIdx === localQuestions.length - 1) {
+      toggleQuizEnd(true);
+      // fetch request to pull resources OR update user object
+    }
     setQuestionIdx(questionIdx + 1);
     toggledDisabled(true);
   };
 
-  const finishHandler = () => {
-    const { score, selectedAnswer, answer } = this.state;
-    if (this.state.currentQuestion === QuizData.length - 1) {
-      console.log(selectedAnswer, answer);
-      if (selectedAnswer === answer) {
-        this.setState({
-          score: score + 1,
-        });
-      }
-      this.setState({
-        quizEnd: true,
-      });
-    }
+  const returnToDash = () => {
+    dispatch(clearQuestions());
+    // fetch request to pull update user object or pull resources
   };
 
   if (localQuestions === null || localQuestions === []) {
     return <p>Loading Data....</p>;
   }
-  if (questionIdx === localQuestions.length -1) {
+  if (quizEnd) {
+    console.log("hiya");
     return (
       <div>
-        <h2>you got {score} out of {localQuestions.length}</h2>
+        <h2>
+          you got {score} out of {localQuestions.length}
+        </h2>
         <Link to="/dashboard" className="link">
-          <Button
-            id="practiceButton"
-            onClick={() => dispatch(clearQuestions())}
-          >
+          <Button id="practiceButton" onClick={returnToDash}>
             Return
           </Button>
         </Link>
@@ -129,7 +78,7 @@ const Quiz = () => {
               variant="contained"
               key={question}
               id={selectedAnswer === question ? "selected" : "questionOption"}
-              onClick={(e) => toggleSelectedAnswer(e)}
+              onClick={() => toggleSelectedAnswer(question)}
               fullWidth
             >
               {question}
@@ -151,7 +100,7 @@ const Quiz = () => {
           {questionIdx === localQuestions.length - 1 && (
             <Button
               id="finishButton"
-              onClick={finishHandler}
+              onClick={nextQuestionHandler}
               variant="contained"
             >
               Finish
