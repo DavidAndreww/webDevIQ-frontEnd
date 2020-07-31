@@ -53,7 +53,7 @@ const Dashboard = (props) => {
 
   // redux hook, how you doin?
   const userObject = useSelector((state) => state.userObject);
-  const resources = useSelector(state => state.resources)
+  const resources = useSelector((state) => state.resources);
   const dispatch = useDispatch();
 
   function questionSelector(array) {
@@ -82,12 +82,6 @@ const Dashboard = (props) => {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-
-  if (resources !== null){
-    console.log('gotEm: ', resources)
-  } else {
-    console.log('waiting on resources. take a test!')
-  }
 
   return (
     <div className="dashRoot">
@@ -187,21 +181,21 @@ const Dashboard = (props) => {
 
       <div id="suggestionCardHeading">Suggested for you.</div>
       <div id="articleContainer">
-        <Card className={classes.root2}>
-          <div className="articleCardTitle">article headline here</div>
-        </Card>
-
-        <Card className={classes.root2}>
-          {" "}
-          <div className="articleCardTitle">article headline here</div>
-        </Card>
-
-        <Card className={classes.root2}>
-          <div className="articleCardContainer">
-            <div className="articleCardTitle">article headline here</div>
-            <Button>Go to article</Button>
-          </div>
-        </Card>
+        {resources !== null &&
+          resources.map((resource) => {
+            return (
+              <Card className={classes.root2} id={resource.question_id}>
+                <div className="articleCardTitle">{resource.heading1}</div>
+                <button onClick={() => window.open(resource.link1)}>
+                  Go to article
+                </button>
+                <div className="articleCardTitle">{resource.heading2}</div>
+                <button onClick={() => window.open(resource.link2)}>
+                  Go to video
+                </button>
+              </Card>
+            );
+          })}
       </div>
       <div id="weAreDesperate">
         As many old and new developers know, projects like these take time and

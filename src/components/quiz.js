@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { loadResources } from '../redux/actions'
+import { loadResources } from "../redux/actions";
 
 const Quiz = () => {
   // int used to iterate over array of questions. increments when 'next' buttin is clicked
@@ -23,29 +23,28 @@ const Quiz = () => {
   const dispatch = useDispatch();
 
   const localQuestions = useSelector((state) => state.questionList);
-  // console.log("localQuestions: ", localQuestions);
 
   const toggleSelectedAnswer = (answer) => {
     setSelectedAnswer(answer);
     disabled && toggledDisabled(false);
   };
 
-  const nextQuestionHandler = (e) => {
-    let trimmedAnswer = selectedAnswer.trim();
-    // let buttonId = e.currentTarget
-
-    if (trimmedAnswer !== localQuestions[questionIdx].answer) {
-      setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
-    }
-    if (trimmedAnswer === localQuestions[questionIdx].answer) {
-      setScore(score + 1);
-    }
+  
+  const nextQuestionHandler = () => {
+    let userAnswer = selectedAnswer.trim();
+    let actualAnswer = localQuestions[questionIdx].answer
+    // user answer is incorrect && add question ID to array of incorrect answers
+    userAnswer !== actualAnswer && setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
+    // user answer is correct && increment score counter
+    userAnswer === actualAnswer && setScore(score + 1);
+    // if question is the last in the array, toggle results page and fetch resources to display in dashboard
     if (questionIdx === localQuestions.length - 1) {
       toggleQuizEnd(true);
-      console.log("fetch resources");
       fetchResources();
     }
+    // used as index in array of questions. increments after each question
     setQuestionIdx(questionIdx + 1);
+    // removes accessibility of 'next' button unti switched back to false
     toggledDisabled(true);
   };
 
@@ -63,10 +62,9 @@ const Quiz = () => {
     }),
   };
 
-  const returnToDash = () => {
+  const toggleReturnToDashboard = () => {
     console.log("fetch user obj");
     // fetch request to pull update user object or pull resources
-    console.log(incorrectAnswers);
   };
 
   if (localQuestions === null || localQuestions === []) {
@@ -79,7 +77,7 @@ const Quiz = () => {
           you got {score} out of {localQuestions.length}
         </h2>
         <Link to="/dashboard" className="link">
-          <Button id="practiceButton" onClick={returnToDash}>
+          <Button id="practiceButton" onClick={toggleReturnToDashboard}>
             Return
           </Button>
         </Link>
@@ -120,8 +118,9 @@ const Quiz = () => {
           )}
           {questionIdx === localQuestions.length - 1 && (
             <Button
-              id="finishButton"
-              onClick={(e) => nextQuestionHandler(e)}
+              id={disabled ? "nextDisabled" : "nextEnabled"}
+              disabled={disabled}
+              onClick={nextQuestionHandler}
               variant="contained"
             >
               Finish
