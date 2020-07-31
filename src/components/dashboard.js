@@ -53,7 +53,7 @@ const Dashboard = (props) => {
 
   // redux hook, how you doin?
   const userObject = useSelector((state) => state.userObject);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   function questionSelector(array) {
     let arr = Object.entries(array);
@@ -64,16 +64,18 @@ const Dashboard = (props) => {
     return selected;
   }
 
+  const questionRequest = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      questions: questionSelector(state),
+    }),
+  };
+
   const startQuiz = () => {
-    fetch("http://localhost:3030/quiz", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        questions: questionSelector(state),
-      }),
-    })
+    fetch("http://localhost:3030/quiz", questionRequest)
       .then((response) => response.json())
-      .then((res) => dispatch(loadQuestions(res)))
+      .then((res) => dispatch(loadQuestions(res)));
   };
 
   const handleChange = (event) => {
@@ -103,9 +105,13 @@ const Dashboard = (props) => {
           </CardContent>
           <CardActions className={classes.actions}>
             <Link className={classes.link} to="/quiz">
-            <Button onClick={startQuiz} variant="contained" id="practiceButton">
-              Practice More!
-            </Button>
+              <Button
+                onClick={startQuiz}
+                variant="contained"
+                id="practiceButton"
+              >
+                Practice More!
+              </Button>
             </Link>
           </CardActions>
         </Card>

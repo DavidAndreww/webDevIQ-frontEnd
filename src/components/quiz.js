@@ -23,16 +23,17 @@ const Quiz = () => {
   const dispatch = useDispatch();
 
   const localQuestions = useSelector((state) => state.questionList);
-  console.log("localQuestions: ", localQuestions);
+  // console.log("localQuestions: ", localQuestions);
 
   const toggleSelectedAnswer = (answer) => {
     setSelectedAnswer(answer);
     disabled && toggledDisabled(false);
   };
 
-  const nextQuestionHandler = () => {
+  const nextQuestionHandler = (e) => {
     let trimmedAnswer = selectedAnswer.trim();
-
+    // let buttonId = e.currentTarget
+  
     if (trimmedAnswer !== localQuestions[questionIdx].answer) {
       setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
     }
@@ -42,11 +43,26 @@ const Quiz = () => {
     if (questionIdx === localQuestions.length - 1) {
       toggleQuizEnd(true);
       console.log("fetch resources");
-      // fetch request to pull resources OR update user object
+   fetchResources()
     }
     setQuestionIdx(questionIdx + 1);
     toggledDisabled(true);
   };
+
+  function fetchResources(){
+    fetch("http://localhost:3030/quiz/resources", resourceRequest)
+    .then(response => response.json())
+    .then(res => console.log('RESOURCES!!!: ', res))
+  }
+
+  const resourceRequest = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      resources: incorrectAnswers
+    })
+  }
+
 
   const returnToDash = () => {
     dispatch(clearQuestions());
@@ -108,7 +124,7 @@ const Quiz = () => {
           {questionIdx === localQuestions.length - 1 && (
             <Button
               id="finishButton"
-              onClick={nextQuestionHandler}
+              onClick={(e)=>nextQuestionHandler(e)}
               variant="contained"
             >
               Finish
