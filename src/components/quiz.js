@@ -19,17 +19,20 @@ const Quiz = () => {
   let [score, setScore] = useState(0);
   // toggled to limit user ability to use next button if answer has not been selected
   let [disabled, toggledDisabled] = useState(true);
-
+  // used to set redux state with resource array pulled from DB
   const dispatch = useDispatch();
-
+  // array of questions pulled from redux state
   const localQuestions = useSelector((state) => state.questionList);
 
+  // runs when a user clicks on an answer
   const toggleSelectedAnswer = (answer) => {
+    // stores currently selected answer in state
     setSelectedAnswer(answer);
+    // sets disabled to false, so user may click on 'next' button 
     disabled && toggledDisabled(false);
   };
 
-  
+  // runs when 'next' button is clicked 
   const nextQuestionHandler = () => {
     let userAnswer = selectedAnswer.trim();
     let actualAnswer = localQuestions[questionIdx].answer
@@ -47,13 +50,13 @@ const Quiz = () => {
     // removes accessibility of 'next' button unti switched back to false
     toggledDisabled(true);
   };
-
+  // POST request to server to request resources based off of incorrect questions
   function fetchResources() {
     fetch("http://localhost:3030/quiz/resources", resourceRequest)
       .then((response) => response.json())
       .then((res) => dispatch(loadResources(res)));
   }
-
+  // payload passed into fetch request
   const resourceRequest = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -61,15 +64,17 @@ const Quiz = () => {
       resources: incorrectAnswers,
     }),
   };
-
+  // return to dashboard and update userObject with results of quiz
   const toggleReturnToDashboard = () => {
     console.log("fetch user obj");
-    // fetch request to pull update user object or pull resources
+    // PUT request to update userObject with correct questions & total attempted questions will happen here
   };
 
+  // if fetch request to load questions is slow, display loading message
   if (localQuestions === null || localQuestions === []) {
-    return <p>Loading Data....</p>;
+    return <p>Populating Questions....</p>;
   }
+  // if there are no more questions left in the quiz, display final score screen
   if (quizEnd) {
     return (
       <div>
@@ -91,7 +96,6 @@ const Quiz = () => {
           <Paper id="questionPaper">
             <div id="question">{localQuestions[questionIdx].question}</div>
           </Paper>
-
           {localQuestions[questionIdx].options.split(",").map((question) => (
             <Button
               variant="contained"
