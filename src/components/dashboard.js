@@ -51,7 +51,6 @@ const Dashboard = (props) => {
     angular: false,
   });
 
-  // redux hook, how you doin?
   const userObject = useSelector((state) => state.userObject);
   const resources = useSelector((state) => state.resources);
   const dispatch = useDispatch();
@@ -178,25 +177,27 @@ const Dashboard = (props) => {
           </CardContent>
         </Card>
       </div>
-
-      <div id="suggestionCardHeading">Suggested for you.</div>
-      <div id="articleContainer">
-        {resources !== null &&
-          resources.map((resource) => {
-            return (
-              <Card className={classes.root2} id={resource.question_id}>
-                <div className="articleCardTitle">{resource.heading1}</div>
-                <button onClick={() => window.open(resource.link1)}>
-                  Go to article
-                </button>
-                <div className="articleCardTitle">{resource.heading2}</div>
-                <button onClick={() => window.open(resource.link2)}>
-                  Go to video
-                </button>
-              </Card>
-            );
-          })}
-      </div>
+      {resources !== null && (
+        <div>
+          <div id="suggestionCardHeading">Suggested for you.</div>
+          <div id="articleContainer">
+            {resources.map((resource) => {
+              return (
+                <Card className={classes.root2} id={resource.question_id}>
+                  <div className="articleCardTitle">{resource.heading1}</div>
+                  <button onClick={() => window.open(resource.link1)}>
+                    Go to article
+                  </button>
+                  <div className="articleCardTitle">{resource.heading2}</div>
+                  <button onClick={() => window.open(resource.link2)}>
+                    Go to video
+                  </button>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      )}
       <div id="weAreDesperate">
         As many old and new developers know, projects like these take time and
         money for us to provide them as a service. If you find this site useful
