@@ -53,6 +53,7 @@ const Dashboard = (props) => {
 
   // redux hook, how you doin?
   const userObject = useSelector((state) => state.userObject);
+  const resources = useSelector(state => state.resources)
   const dispatch = useDispatch();
 
   function questionSelector(array) {
@@ -81,6 +82,12 @@ const Dashboard = (props) => {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+
+  if (resources !== null){
+    console.log('gotEm: ', resources)
+  } else {
+    console.log('waiting on resources. take a test!')
+  }
 
   return (
     <div className="dashRoot">

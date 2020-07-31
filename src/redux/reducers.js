@@ -18,4 +18,13 @@ const questionList = (state = null, action) => {
   }
 };
 
-export default combineReducers({ userObject, questionList });
+const resources = (state = null, action) => {
+  switch(action.type){
+    case 'RESOURCES':
+      return action.value;
+      default:
+        return state;
+  }
+}
+
+export default combineReducers({ userObject, questionList, resources });

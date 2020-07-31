@@ -19,9 +19,9 @@ export const loadQuestions = (questions) => {
   };
 };
 
-export const clearQuestions = () => {
+export const loadResources = (resources) => {
   return {
-    type: 'CLEAR_QUESTIONS',
-    value: null
+    type: 'RESOURCES',
+    value: resources
   }
 }

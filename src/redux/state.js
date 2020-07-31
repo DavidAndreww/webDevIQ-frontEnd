@@ -7,7 +7,8 @@ const state = {
         questionsAttempted: 224,
         correctAnswers: 200
     },
-    questionList: null
+    questionList: null,
+    resources: null
 };
 
 export default state;

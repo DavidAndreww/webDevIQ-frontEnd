@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { clearQuestions } from "../redux/actions";
+import { loadResources } from '../redux/actions'
 
 const Quiz = () => {
   // int used to iterate over array of questions. increments when 'next' buttin is clicked
@@ -52,7 +52,7 @@ const Quiz = () => {
   function fetchResources() {
     fetch("http://localhost:3030/quiz/resources", resourceRequest)
       .then((response) => response.json())
-      .then((res) => console.log("RESOURCES!!!: ", res));
+      .then((res) => dispatch(loadResources(res)));
   }
 
   const resourceRequest = {
@@ -64,7 +64,6 @@ const Quiz = () => {
   };
 
   const returnToDash = () => {
-    dispatch(clearQuestions());
     console.log("fetch user obj");
     // fetch request to pull update user object or pull resources
     console.log(incorrectAnswers);
