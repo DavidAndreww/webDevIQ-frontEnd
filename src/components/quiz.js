@@ -33,7 +33,7 @@ const Quiz = () => {
   const nextQuestionHandler = (e) => {
     let trimmedAnswer = selectedAnswer.trim();
     // let buttonId = e.currentTarget
-  
+
     if (trimmedAnswer !== localQuestions[questionIdx].answer) {
       setIncorrectAnswer([...incorrectAnswers, localQuestions[questionIdx].id]);
     }
@@ -43,26 +43,25 @@ const Quiz = () => {
     if (questionIdx === localQuestions.length - 1) {
       toggleQuizEnd(true);
       console.log("fetch resources");
-   fetchResources()
+      fetchResources();
     }
     setQuestionIdx(questionIdx + 1);
     toggledDisabled(true);
   };
 
-  function fetchResources(){
+  function fetchResources() {
     fetch("http://localhost:3030/quiz/resources", resourceRequest)
-    .then(response => response.json())
-    .then(res => console.log('RESOURCES!!!: ', res))
+      .then((response) => response.json())
+      .then((res) => console.log("RESOURCES!!!: ", res));
   }
 
   const resourceRequest = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      resources: incorrectAnswers
-    })
-  }
-
+      resources: incorrectAnswers,
+    }),
+  };
 
   const returnToDash = () => {
     dispatch(clearQuestions());
@@ -75,7 +74,6 @@ const Quiz = () => {
     return <p>Loading Data....</p>;
   }
   if (quizEnd) {
-    console.log("hiya");
     return (
       <div>
         <h2>
@@ -124,7 +122,7 @@ const Quiz = () => {
           {questionIdx === localQuestions.length - 1 && (
             <Button
               id="finishButton"
-              onClick={(e)=>nextQuestionHandler(e)}
+              onClick={(e) => nextQuestionHandler(e)}
               variant="contained"
             >
               Finish
