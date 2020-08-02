@@ -92,7 +92,7 @@ const Dashboard = (props) => {
               <div className="cardTitle">DevIQ Scorecard</div>
               <div id="scoreNum">
                 {(
-                  (userObject.correctAnswers / userObject.questionsAttempted) *
+                  (userObject.correctAttempts / userObject.totalAttempts) *
                   100
                 ).toFixed(1)}
                 %
