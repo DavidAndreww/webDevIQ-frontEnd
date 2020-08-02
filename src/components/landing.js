@@ -7,6 +7,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormDialog from '../components/createAccount'
 import DialogActions from '@material-ui/core/DialogActions';
 
+// react-use-auth
+import { useAuth } from 'react-use-auth'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,10 +40,22 @@ const Landing = () => {
 		setChecked((prev) => !prev);
 	};
 
+	// for react-use-auth
+	const LogButton = () => {
+		const { isAuthenticated, login, logout } = useAuth()
+		console.log('isAuthenticated?: ', isAuthenticated)
+		if (isAuthenticated()){
+			return <button onClick={logout}>LOG OUT</button>
+		} else {
+			return <button onClick={login}>LOG IN</button>
+		}
+	}
+
 	return (
 		<div className='landingRoot'>
 			<div id='welcomeText'>
 				<h2>Welcome to DevIQ.</h2>
+				<LogButton />
 				<h4>We created this website in efforts to help entry level job seekers practice interviewing. Our goal was to make a study resource based on the non-whiteboarding based questions you are likely to be asked in an interview. </h4>
 				<DialogActions>
            <FormDialog />
