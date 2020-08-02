@@ -25,3 +25,10 @@ export const loadResources = (resources) => {
     value: resources
   }
 }
+
+export const updateUserQuestions = (questions) => {
+  return {
+    type: 'UPDATED_QUESTIONS',
+    value: questions
+  }
+}
