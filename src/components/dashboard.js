@@ -9,13 +9,8 @@ import Switch from "@material-ui/core/Switch";
 import FormDialog from "../components/submission";
 import { Link } from "react-router-dom";
 import { loadQuestions } from "../redux/actions";
+import { useAuth0 } from '@auth0/auth0-react'
 
-//essentially we are creating our own api. what are we supposed to do about storing the headlilne and a basic overview of the article on the dashboard? I just realized this is going to be an issue. In my mind when i was thinking about the suggestions spot it was just thinking like we were accessing an api that would have lik "headline" "summary" "link"
-
-// wuddya think? hard for me to style without thinking about this. maybe we just create an api!!!!
-
-//6/22/20
-// Touche, that is a problem. I just googled, and maybe I'm just tired, but I can't figure out how a rest API is different from what we have as far as creating the API and storing data. Could we add a new table for resource data? I know we can use the foreign key to tie each resource in the resource table to the corresponding question in the question table. The resource table could have id, name, description, link, and we could store multiple (article, video) for each question. Let me know if this is anywhere near what you were thinking, lol.
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +38,7 @@ const useStyles = makeStyles({
 });
 
 const Dashboard = (props) => {
+  const { user, isAuthenticated } = useAuth0()
   const classes = useStyles();
   const [state, setState] = React.useState({
     javaScript: true,
@@ -84,7 +80,13 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashRoot">
-      <div id="welcomeUser">Welcome, {userObject.username}</div>
+      {isAuthenticated && (
+        
+          <div id="welcomeUser">Welcome, {user.name}</div> 
+        
+        
+      )}
+      {/* <div id="welcomeUser">Welcome, {userObject.username}</div> */}
       <div className="userCards">
         <Card className={classes.root}>
           <CardContent>

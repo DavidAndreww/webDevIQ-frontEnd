@@ -6,8 +6,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function FormDialog() {
+	const { loginWithRedirect } = useAuth0()
 	const [open, setOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
@@ -20,7 +22,7 @@ export default function FormDialog() {
 
 	return (
 		<div>
-			<Button onClick={handleClickOpen} id="createButton">
+			<Button onClick={()=>loginWithRedirect()} id="createButton">
 				Create an Account!
       </Button>
 			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

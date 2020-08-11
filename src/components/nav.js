@@ -19,9 +19,9 @@ import { RiProfileLine } from "react-icons/ri";
 import { GoGraph } from "react-icons/go";
 import { GrContact, GrInfo } from "react-icons/gr";
 import { Link } from 'react-router-dom'
+import { Avatar } from '@material-ui/core'
+import { useAuth0 } from '@auth0/auth0-react'
 
-// https://github.com/Swizec/useAuth/tree/master/examples/useauth-create-react-app
-// check it out!
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ButtonAppBar() {
+  const { user, isAuthenticated } = useAuth0()
   const [state, setState] = React.useState({
     right: false,
   });
@@ -121,6 +122,11 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
            <Link id='logoLink' to='/dashboard'>DevIQ</Link> 
           </Typography>
+          {isAuthenticated && (
+            
+              <Avatar alt={user.name} src={user.picture} />
+            
+          )}
           <Button id='loginButton'><FormDialog/></Button>
           <div>
             {['right'].map((anchor) => (
