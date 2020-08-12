@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -38,6 +38,8 @@ const useStyles = makeStyles({
 });
 
 const Dashboard = (props) => {
+ 
+
   const { user, isAuthenticated } = useAuth0()
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -46,6 +48,8 @@ const Dashboard = (props) => {
     node: true,
     angular: false,
   });
+
+  
 
   const userObject = useSelector((state) => state.userObject);
   const resources = useSelector((state) => state.resources);
