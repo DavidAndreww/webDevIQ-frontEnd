@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import FormDialog from '../components/login'
+import { LoginButton, LogoutButton } from '../components/authButtons'
 import { MdAccountBox } from "react-icons/md";
 import { RiProfileLine } from "react-icons/ri";
 import { GoGraph } from "react-icons/go";
@@ -127,7 +127,7 @@ export default function ButtonAppBar() {
               <Avatar alt={user.name} src={user.picture} />
             
           )}
-          <Button id='loginButton'><FormDialog/></Button>
+          {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
           <div>
             {['right'].map((anchor) => (
               <React.Fragment key={anchor}>

@@ -4,8 +4,7 @@ import Grow from "@material-ui/core/Grow";
 import { makeStyles } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormDialog from "../components/createAccount";
-import DialogActions from "@material-ui/core/DialogActions";
+import { CreateAccountButton } from "../components/authButtons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,9 +44,9 @@ const Landing = () => {
           the non-whiteboarding based questions you are likely to be asked in an
           interview.{" "}
         </h4>
-        <DialogActions>
-          <FormDialog />
-        </DialogActions>
+        
+          <CreateAccountButton />
+        
       </div>
 
       <div className={classes.root}>
