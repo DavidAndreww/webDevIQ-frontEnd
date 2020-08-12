@@ -9,8 +9,7 @@ import Switch from "@material-ui/core/Switch";
 import FormDialog from "../components/submission";
 import { Link } from "react-router-dom";
 import { loadQuestions } from "../redux/actions";
-import { useAuth0 } from '@auth0/auth0-react'
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles({
   root: {
@@ -38,9 +37,7 @@ const useStyles = makeStyles({
 });
 
 const Dashboard = (props) => {
- 
-
-  const { user, isAuthenticated } = useAuth0()
+  const { user, isAuthenticated } = useAuth0();
   const classes = useStyles();
   const [state, setState] = React.useState({
     javaScript: true,
@@ -48,8 +45,6 @@ const Dashboard = (props) => {
     node: true,
     angular: false,
   });
-
-  
 
   const userObject = useSelector((state) => state.userObject);
   const resources = useSelector((state) => state.resources);
@@ -81,18 +76,10 @@ const Dashboard = (props) => {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-  console.log('USER: ', user)
-  console.log('isAuthenticated: ', isAuthenticated)
 
   return (
     <div className="dashRoot">
-      {isAuthenticated && (
-        
-          <div id="welcomeUser">Welcome, {user.name}</div> 
-        
-        
-      )}
-      {/* <div id="welcomeUser">Welcome, {userObject.username}</div> */}
+      {isAuthenticated && <div id="welcomeUser">Welcome, {user.name}</div>}
       <div className="userCards">
         <Card className={classes.root}>
           <CardContent>
