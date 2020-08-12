@@ -77,6 +77,8 @@ const Dashboard = (props) => {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+  console.log('USER: ', user)
+  console.log('isAuthenticated: ', isAuthenticated)
 
   return (
     <div className="dashRoot">

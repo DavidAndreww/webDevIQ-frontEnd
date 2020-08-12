@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useAuth0 } from '@auth0/auth0-react'
-import { Avatar } from '@material-ui/core'
 
 export default function FormDialog() {
 	const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
