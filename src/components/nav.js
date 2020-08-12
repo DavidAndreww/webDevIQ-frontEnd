@@ -123,9 +123,7 @@ export default function ButtonAppBar() {
            <Link id='logoLink' to='/dashboard'>DevIQ</Link> 
           </Typography>
           {isAuthenticated && (
-            
               <Avatar alt={user.name} src={user.picture} />
-            
           )}
           {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
           <div>
