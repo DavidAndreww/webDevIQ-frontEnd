@@ -178,7 +178,7 @@ const Dashboard = (props) => {
           <div id="articleContainer">
             {resources.map((resource) => {
               return (
-                <Card className={classes.root2} id={resource.question_id}>
+                <Card className={classes.root2} id={resource.question_id} key={resource.question_id}>
                   <div className="articleCardTitle">{resource.heading1}</div>
                   <button onClick={() => window.open(resource.link1)}>
                     Go to article
